@@ -14,6 +14,28 @@
 		2328845221E6032800E5E7C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2328845021E6032800E5E7C1 /* LaunchScreen.storyboard */; };
 		2328845D21E6032900E5E7C1 /* DogOutMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2328845C21E6032900E5E7C1 /* DogOutMapTests.swift */; };
 		2328846821E6032900E5E7C1 /* DogOutMapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2328846721E6032900E5E7C1 /* DogOutMapUITests.swift */; };
+		2328847A21E60ACA00E5E7C1 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2328847921E60ACA00E5E7C1 /* SignInViewController.swift */; };
+		2328847C21E60ADA00E5E7C1 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2328847B21E60ADA00E5E7C1 /* SignUpViewController.swift */; };
+		2328848D21E60B3200E5E7C1 /* current.png in Resources */ = {isa = PBXBuildFile; fileRef = 2328847D21E60B3100E5E7C1 /* current.png */; };
+		2328848E21E60B3200E5E7C1 /* supermarket.png in Resources */ = {isa = PBXBuildFile; fileRef = 2328847E21E60B3100E5E7C1 /* supermarket.png */; };
+		2328848F21E60B3200E5E7C1 /* shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 2328847F21E60B3100E5E7C1 /* shop.png */; };
+		2328849021E60B3200E5E7C1 /* workspace.png in Resources */ = {isa = PBXBuildFile; fileRef = 2328848021E60B3100E5E7C1 /* workspace.png */; };
+		2328849121E60B3200E5E7C1 /* hotel.png in Resources */ = {isa = PBXBuildFile; fileRef = 2328848121E60B3100E5E7C1 /* hotel.png */; };
+		2328849221E60B3200E5E7C1 /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 2328848221E60B3100E5E7C1 /* plus.png */; };
+		2328849321E60B3200E5E7C1 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 2328848321E60B3100E5E7C1 /* search.png */; };
+		2328849421E60B3200E5E7C1 /* left-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 2328848421E60B3100E5E7C1 /* left-arrow.png */; };
+		2328849521E60B3200E5E7C1 /* sports.png in Resources */ = {isa = PBXBuildFile; fileRef = 2328848521E60B3100E5E7C1 /* sports.png */; };
+		2328849621E60B3200E5E7C1 /* beach.png in Resources */ = {isa = PBXBuildFile; fileRef = 2328848621E60B3100E5E7C1 /* beach.png */; };
+		2328849721E60B3200E5E7C1 /* activity.png in Resources */ = {isa = PBXBuildFile; fileRef = 2328848721E60B3200E5E7C1 /* activity.png */; };
+		2328849821E60B3200E5E7C1 /* eat.png in Resources */ = {isa = PBXBuildFile; fileRef = 2328848821E60B3200E5E7C1 /* eat.png */; };
+		2328849921E60B3200E5E7C1 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2328848921E60B3200E5E7C1 /* logo.png */; };
+		2328849A21E60B3200E5E7C1 /* cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = 2328848A21E60B3200E5E7C1 /* cancel.png */; };
+		2328849B21E60B3200E5E7C1 /* directions.png in Resources */ = {isa = PBXBuildFile; fileRef = 2328848B21E60B3200E5E7C1 /* directions.png */; };
+		2328849C21E60B3200E5E7C1 /* direction_detail.png in Resources */ = {isa = PBXBuildFile; fileRef = 2328848C21E60B3200E5E7C1 /* direction_detail.png */; };
+		2328849F21E627E500E5E7C1 /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 2328849D21E627E400E5E7C1 /* lock.png */; };
+		232884A021E627E500E5E7C1 /* email.png in Resources */ = {isa = PBXBuildFile; fileRef = 2328849E21E627E400E5E7C1 /* email.png */; };
+		232884A221E64A2B00E5E7C1 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 232884A121E64A2800E5E7C1 /* user.png */; };
+		4E74973EE5DA275190861EA8 /* Pods_DogOutMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F08C812D5FC374DDB4A3424 /* Pods_DogOutMap.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		068EFB9BD31AF7FFC675D7E7 /* Pods-DogOutMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DogOutMap.debug.xcconfig"; path = "Target Support Files/Pods-DogOutMap/Pods-DogOutMap.debug.xcconfig"; sourceTree = "<group>"; };
 		2328844421E6032100E5E7C1 /* DogOutMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogOutMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2328844721E6032100E5E7C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2328844921E6032100E5E7C1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +70,29 @@
 		2328846321E6032900E5E7C1 /* DogOutMapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DogOutMapUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2328846721E6032900E5E7C1 /* DogOutMapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogOutMapUITests.swift; sourceTree = "<group>"; };
 		2328846921E6032900E5E7C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2328847921E60ACA00E5E7C1 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		2328847B21E60ADA00E5E7C1 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		2328847D21E60B3100E5E7C1 /* current.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = current.png; sourceTree = "<group>"; };
+		2328847E21E60B3100E5E7C1 /* supermarket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = supermarket.png; sourceTree = "<group>"; };
+		2328847F21E60B3100E5E7C1 /* shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shop.png; sourceTree = "<group>"; };
+		2328848021E60B3100E5E7C1 /* workspace.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = workspace.png; sourceTree = "<group>"; };
+		2328848121E60B3100E5E7C1 /* hotel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hotel.png; sourceTree = "<group>"; };
+		2328848221E60B3100E5E7C1 /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
+		2328848321E60B3100E5E7C1 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
+		2328848421E60B3100E5E7C1 /* left-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left-arrow.png"; sourceTree = "<group>"; };
+		2328848521E60B3100E5E7C1 /* sports.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sports.png; sourceTree = "<group>"; };
+		2328848621E60B3100E5E7C1 /* beach.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beach.png; sourceTree = "<group>"; };
+		2328848721E60B3200E5E7C1 /* activity.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = activity.png; sourceTree = "<group>"; };
+		2328848821E60B3200E5E7C1 /* eat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eat.png; sourceTree = "<group>"; };
+		2328848921E60B3200E5E7C1 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		2328848A21E60B3200E5E7C1 /* cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cancel.png; sourceTree = "<group>"; };
+		2328848B21E60B3200E5E7C1 /* directions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = directions.png; sourceTree = "<group>"; };
+		2328848C21E60B3200E5E7C1 /* direction_detail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = direction_detail.png; sourceTree = "<group>"; };
+		2328849D21E627E400E5E7C1 /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock.png; sourceTree = "<group>"; };
+		2328849E21E627E400E5E7C1 /* email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = email.png; sourceTree = "<group>"; };
+		232884A121E64A2800E5E7C1 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
+		30EDC0C515F991391D01E7C2 /* Pods-DogOutMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DogOutMap.release.xcconfig"; path = "Target Support Files/Pods-DogOutMap/Pods-DogOutMap.release.xcconfig"; sourceTree = "<group>"; };
+		7F08C812D5FC374DDB4A3424 /* Pods_DogOutMap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DogOutMap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E74973EE5DA275190861EA8 /* Pods_DogOutMap.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +128,8 @@
 				2328845B21E6032900E5E7C1 /* DogOutMapTests */,
 				2328846621E6032900E5E7C1 /* DogOutMapUITests */,
 				2328844521E6032100E5E7C1 /* Products */,
+				FF1F92E456ED8A5027C25F30 /* Pods */,
+				545113ED6E79ED816C766019 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,6 +146,8 @@
 		2328844621E6032100E5E7C1 /* DogOutMap */ = {
 			isa = PBXGroup;
 			children = (
+				2328847621E6091F00E5E7C1 /* assets */,
+				2328847521E6091500E5E7C1 /* screens */,
 				2328844721E6032100E5E7C1 /* AppDelegate.swift */,
 				2328844921E6032100E5E7C1 /* ViewController.swift */,
 				2328844B21E6032100E5E7C1 /* Main.storyboard */,
@@ -125,6 +176,58 @@
 			path = DogOutMapUITests;
 			sourceTree = "<group>";
 		};
+		2328847521E6091500E5E7C1 /* screens */ = {
+			isa = PBXGroup;
+			children = (
+				2328847921E60ACA00E5E7C1 /* SignInViewController.swift */,
+				2328847B21E60ADA00E5E7C1 /* SignUpViewController.swift */,
+			);
+			path = screens;
+			sourceTree = "<group>";
+		};
+		2328847621E6091F00E5E7C1 /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				232884A121E64A2800E5E7C1 /* user.png */,
+				2328849E21E627E400E5E7C1 /* email.png */,
+				2328849D21E627E400E5E7C1 /* lock.png */,
+				2328848721E60B3200E5E7C1 /* activity.png */,
+				2328848621E60B3100E5E7C1 /* beach.png */,
+				2328848A21E60B3200E5E7C1 /* cancel.png */,
+				2328847D21E60B3100E5E7C1 /* current.png */,
+				2328848C21E60B3200E5E7C1 /* direction_detail.png */,
+				2328848B21E60B3200E5E7C1 /* directions.png */,
+				2328848821E60B3200E5E7C1 /* eat.png */,
+				2328848121E60B3100E5E7C1 /* hotel.png */,
+				2328848421E60B3100E5E7C1 /* left-arrow.png */,
+				2328848921E60B3200E5E7C1 /* logo.png */,
+				2328848221E60B3100E5E7C1 /* plus.png */,
+				2328848321E60B3100E5E7C1 /* search.png */,
+				2328847F21E60B3100E5E7C1 /* shop.png */,
+				2328848521E60B3100E5E7C1 /* sports.png */,
+				2328847E21E60B3100E5E7C1 /* supermarket.png */,
+				2328848021E60B3100E5E7C1 /* workspace.png */,
+			);
+			path = assets;
+			sourceTree = "<group>";
+		};
+		545113ED6E79ED816C766019 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7F08C812D5FC374DDB4A3424 /* Pods_DogOutMap.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FF1F92E456ED8A5027C25F30 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				068EFB9BD31AF7FFC675D7E7 /* Pods-DogOutMap.debug.xcconfig */,
+				30EDC0C515F991391D01E7C2 /* Pods-DogOutMap.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +235,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2328846C21E6032900E5E7C1 /* Build configuration list for PBXNativeTarget "DogOutMap" */;
 			buildPhases = (
+				E3F76016AC1A69088A06AC76 /* [CP] Check Pods Manifest.lock */,
 				2328844021E6032100E5E7C1 /* Sources */,
 				2328844121E6032100E5E7C1 /* Frameworks */,
 				2328844221E6032100E5E7C1 /* Resources */,
+				2975AB81BABBB4CD53ADDCF2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -229,9 +334,28 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2328849521E60B3200E5E7C1 /* sports.png in Resources */,
+				2328849121E60B3200E5E7C1 /* hotel.png in Resources */,
 				2328845221E6032800E5E7C1 /* LaunchScreen.storyboard in Resources */,
+				2328849421E60B3200E5E7C1 /* left-arrow.png in Resources */,
+				2328849221E60B3200E5E7C1 /* plus.png in Resources */,
+				2328848E21E60B3200E5E7C1 /* supermarket.png in Resources */,
+				2328849021E60B3200E5E7C1 /* workspace.png in Resources */,
+				2328849A21E60B3200E5E7C1 /* cancel.png in Resources */,
+				2328849C21E60B3200E5E7C1 /* direction_detail.png in Resources */,
+				2328849321E60B3200E5E7C1 /* search.png in Resources */,
+				2328848D21E60B3200E5E7C1 /* current.png in Resources */,
+				2328849621E60B3200E5E7C1 /* beach.png in Resources */,
+				2328849B21E60B3200E5E7C1 /* directions.png in Resources */,
 				2328844F21E6032800E5E7C1 /* Assets.xcassets in Resources */,
+				232884A221E64A2B00E5E7C1 /* user.png in Resources */,
 				2328844D21E6032100E5E7C1 /* Main.storyboard in Resources */,
+				2328849921E60B3200E5E7C1 /* logo.png in Resources */,
+				2328849F21E627E500E5E7C1 /* lock.png in Resources */,
+				2328849821E60B3200E5E7C1 /* eat.png in Resources */,
+				2328849721E60B3200E5E7C1 /* activity.png in Resources */,
+				2328848F21E60B3200E5E7C1 /* shop.png in Resources */,
+				232884A021E627E500E5E7C1 /* email.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,6 +375,57 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2975AB81BABBB4CD53ADDCF2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DogOutMap/Pods-DogOutMap-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AARatingBar/AARatingBar.framework",
+				"${BUILT_PRODUCTS_DIR}/ImageSlideshow/ImageSlideshow.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AARatingBar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageSlideshow.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DogOutMap/Pods-DogOutMap-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E3F76016AC1A69088A06AC76 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DogOutMap-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2328844021E6032100E5E7C1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -258,6 +433,8 @@
 			files = (
 				2328844A21E6032100E5E7C1 /* ViewController.swift in Sources */,
 				2328844821E6032100E5E7C1 /* AppDelegate.swift in Sources */,
+				2328847C21E60ADA00E5E7C1 /* SignUpViewController.swift in Sources */,
+				2328847A21E60ACA00E5E7C1 /* SignInViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,6 +607,7 @@
 		};
 		2328846D21E6032900E5E7C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 068EFB9BD31AF7FFC675D7E7 /* Pods-DogOutMap.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -447,6 +625,7 @@
 		};
 		2328846E21E6032900E5E7C1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30EDC0C515F991391D01E7C2 /* Pods-DogOutMap.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
