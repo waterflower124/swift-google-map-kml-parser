@@ -35,6 +35,11 @@
 		2328849F21E627E500E5E7C1 /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 2328849D21E627E400E5E7C1 /* lock.png */; };
 		232884A021E627E500E5E7C1 /* email.png in Resources */ = {isa = PBXBuildFile; fileRef = 2328849E21E627E400E5E7C1 /* email.png */; };
 		232884A221E64A2B00E5E7C1 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 232884A121E64A2800E5E7C1 /* user.png */; };
+		2373C75D21E6678A00C1F6DF /* ForgetFirstAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2373C75C21E6678A00C1F6DF /* ForgetFirstAlertViewController.swift */; };
+		2373C76121E6994000C1F6DF /* TermsAndConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2373C76021E6994000C1F6DF /* TermsAndConditionsViewController.swift */; };
+		2373C76321E6D9D200C1F6DF /* close_terms.png in Resources */ = {isa = PBXBuildFile; fileRef = 2373C76221E6D9D000C1F6DF /* close_terms.png */; };
+		2373C76521E6DE9900C1F6DF /* VerifyCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2373C76421E6DE9900C1F6DF /* VerifyCodeViewController.swift */; };
+		2373C76721E74EC100C1F6DF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2373C76621E74EC100C1F6DF /* HomeViewController.swift */; };
 		4E74973EE5DA275190861EA8 /* Pods_DogOutMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F08C812D5FC374DDB4A3424 /* Pods_DogOutMap.framework */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +96,11 @@
 		2328849D21E627E400E5E7C1 /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock.png; sourceTree = "<group>"; };
 		2328849E21E627E400E5E7C1 /* email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = email.png; sourceTree = "<group>"; };
 		232884A121E64A2800E5E7C1 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
+		2373C75C21E6678A00C1F6DF /* ForgetFirstAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetFirstAlertViewController.swift; sourceTree = "<group>"; };
+		2373C76021E6994000C1F6DF /* TermsAndConditionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsViewController.swift; sourceTree = "<group>"; };
+		2373C76221E6D9D000C1F6DF /* close_terms.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close_terms.png; sourceTree = "<group>"; };
+		2373C76421E6DE9900C1F6DF /* VerifyCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyCodeViewController.swift; sourceTree = "<group>"; };
+		2373C76621E74EC100C1F6DF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		30EDC0C515F991391D01E7C2 /* Pods-DogOutMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DogOutMap.release.xcconfig"; path = "Target Support Files/Pods-DogOutMap/Pods-DogOutMap.release.xcconfig"; sourceTree = "<group>"; };
 		7F08C812D5FC374DDB4A3424 /* Pods_DogOutMap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DogOutMap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -181,6 +191,10 @@
 			children = (
 				2328847921E60ACA00E5E7C1 /* SignInViewController.swift */,
 				2328847B21E60ADA00E5E7C1 /* SignUpViewController.swift */,
+				2373C75C21E6678A00C1F6DF /* ForgetFirstAlertViewController.swift */,
+				2373C76021E6994000C1F6DF /* TermsAndConditionsViewController.swift */,
+				2373C76421E6DE9900C1F6DF /* VerifyCodeViewController.swift */,
+				2373C76621E74EC100C1F6DF /* HomeViewController.swift */,
 			);
 			path = screens;
 			sourceTree = "<group>";
@@ -188,6 +202,7 @@
 		2328847621E6091F00E5E7C1 /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				2373C76221E6D9D000C1F6DF /* close_terms.png */,
 				232884A121E64A2800E5E7C1 /* user.png */,
 				2328849E21E627E400E5E7C1 /* email.png */,
 				2328849D21E627E400E5E7C1 /* lock.png */,
@@ -344,6 +359,7 @@
 				2328849A21E60B3200E5E7C1 /* cancel.png in Resources */,
 				2328849C21E60B3200E5E7C1 /* direction_detail.png in Resources */,
 				2328849321E60B3200E5E7C1 /* search.png in Resources */,
+				2373C76321E6D9D200C1F6DF /* close_terms.png in Resources */,
 				2328848D21E60B3200E5E7C1 /* current.png in Resources */,
 				2328849621E60B3200E5E7C1 /* beach.png in Resources */,
 				2328849B21E60B3200E5E7C1 /* directions.png in Resources */,
@@ -386,6 +402,8 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-DogOutMap/Pods-DogOutMap-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AARatingBar/AARatingBar.framework",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/ImageSlideshow/ImageSlideshow.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
@@ -394,6 +412,8 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AARatingBar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageSlideshow.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
@@ -432,6 +452,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2328844A21E6032100E5E7C1 /* ViewController.swift in Sources */,
+				2373C75D21E6678A00C1F6DF /* ForgetFirstAlertViewController.swift in Sources */,
+				2373C76121E6994000C1F6DF /* TermsAndConditionsViewController.swift in Sources */,
+				2373C76721E74EC100C1F6DF /* HomeViewController.swift in Sources */,
+				2373C76521E6DE9900C1F6DF /* VerifyCodeViewController.swift in Sources */,
 				2328844821E6032100E5E7C1 /* AppDelegate.swift in Sources */,
 				2328847C21E60ADA00E5E7C1 /* SignUpViewController.swift in Sources */,
 				2328847A21E60ACA00E5E7C1 /* SignInViewController.swift in Sources */,

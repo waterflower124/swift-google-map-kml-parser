@@ -93,6 +93,189 @@
             </objects>
             <point key="canvasLocation" x="1146" y="-1159"/>
         </scene>
+        <!--Forget First Alert View Controller-->
+        <scene sceneID="TwC-4G-UpV">
+            <objects>
+                <viewController id="Wmo-4Z-JWt" customClass="ForgetFirstAlertViewController" customModule="DogOutMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uBc-tD-yLk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fzQ-np-JSB">
+                                <rect key="frame" x="37.5" y="243.5" width="300" height="200"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGd-qv-96a">
+                                        <rect key="frame" x="20" y="15" width="200" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="hAB-Pg-xLL"/>
+                                            <constraint firstAttribute="width" constant="200" id="uEL-P7-QrE"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="Email Address" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="DDN-bZ-lI9">
+                                        <rect key="frame" x="10" y="85" width="280" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="N5J-uJ-4d9"/>
+                                        </constraints>
+                                        <attributedString key="attributedText"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Oa-62-tz6">
+                                        <rect key="frame" x="177" y="160" width="30" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="Hmi-z7-4ET"/>
+                                            <constraint firstAttribute="height" constant="31" id="mfy-0o-cJh"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
+                                        <state key="normal" title="OK">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="sendEmailButtonAction:" destination="Wmo-4Z-JWt" eventType="touchUpInside" id="JiV-SN-T4o"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y3M-Aa-OeT">
+                                        <rect key="frame" x="227" y="160" width="53" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="31" id="2Lw-LX-bfg"/>
+                                            <constraint firstAttribute="width" constant="53" id="DOf-j9-6Gd"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="sendEmailCancelButtonAction:" destination="Wmo-4Z-JWt" eventType="touchUpInside" id="cg8-38-bJF"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="DDN-bZ-lI9" firstAttribute="leading" secondItem="fzQ-np-JSB" secondAttribute="leading" constant="10" id="4DA-9J-8ME"/>
+                                    <constraint firstItem="8Oa-62-tz6" firstAttribute="top" secondItem="DDN-bZ-lI9" secondAttribute="bottom" constant="35" id="5Lq-zX-E1M"/>
+                                    <constraint firstItem="DDN-bZ-lI9" firstAttribute="top" secondItem="hGd-qv-96a" secondAttribute="bottom" constant="40" id="GWr-AQ-W53"/>
+                                    <constraint firstItem="y3M-Aa-OeT" firstAttribute="top" secondItem="DDN-bZ-lI9" secondAttribute="bottom" constant="35" id="OgP-Zm-O86"/>
+                                    <constraint firstItem="y3M-Aa-OeT" firstAttribute="leading" secondItem="8Oa-62-tz6" secondAttribute="trailing" constant="20" id="PKb-xe-4Yq"/>
+                                    <constraint firstAttribute="trailing" secondItem="DDN-bZ-lI9" secondAttribute="trailing" constant="10" id="d5x-fv-fTL"/>
+                                    <constraint firstAttribute="width" constant="300" id="hBR-UU-u0A"/>
+                                    <constraint firstItem="hGd-qv-96a" firstAttribute="leading" secondItem="fzQ-np-JSB" secondAttribute="leading" constant="20" id="hpW-Qs-cdB"/>
+                                    <constraint firstItem="hGd-qv-96a" firstAttribute="top" secondItem="fzQ-np-JSB" secondAttribute="top" constant="15" id="iXZ-TE-zAz"/>
+                                    <constraint firstAttribute="trailing" secondItem="y3M-Aa-OeT" secondAttribute="trailing" constant="20" id="puY-ZJ-6bJ"/>
+                                    <constraint firstAttribute="height" constant="200" id="qF2-AE-xuE"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TQR-ze-EdI">
+                                <rect key="frame" x="37.5" y="193.5" width="300" height="300"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reset Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DIY-VW-RJV">
+                                        <rect key="frame" x="20" y="15" width="200" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="rZT-um-Ega"/>
+                                            <constraint firstAttribute="width" constant="200" id="y3b-kM-BZB"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="Verification Code" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="irW-cO-Cwb">
+                                        <rect key="frame" x="10" y="85" width="280" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="xUr-S2-VjW"/>
+                                        </constraints>
+                                        <attributedString key="attributedText"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="New Password" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="6jd-H4-Rdt">
+                                        <rect key="frame" x="10" y="135" width="280" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Ifd-zJ-GhB"/>
+                                        </constraints>
+                                        <attributedString key="attributedText"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6O-BI-dB6">
+                                        <rect key="frame" x="177" y="260" width="30" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="31" id="2Y3-aR-lZn"/>
+                                            <constraint firstAttribute="width" constant="30" id="dBO-Ct-C2I"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
+                                        <state key="normal" title="OK">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="resetPasswordButtonAction:" destination="Wmo-4Z-JWt" eventType="touchUpInside" id="wlk-4i-5II"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cxk-bC-Iso">
+                                        <rect key="frame" x="227" y="260" width="53" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="31" id="78U-MU-GLu"/>
+                                            <constraint firstAttribute="width" constant="53" id="RM0-ZG-G55"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="resetPasswordCancelButtonAction:" destination="Wmo-4Z-JWt" eventType="touchUpInside" id="ljt-MY-jgI"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="Confirm Password" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="HS5-CJ-pMy">
+                                        <rect key="frame" x="10" y="185" width="280" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Z83-ez-Zf3"/>
+                                        </constraints>
+                                        <attributedString key="attributedText"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="HS5-CJ-pMy" firstAttribute="top" secondItem="6jd-H4-Rdt" secondAttribute="bottom" constant="10" id="20f-Uk-gHt"/>
+                                    <constraint firstItem="irW-cO-Cwb" firstAttribute="top" secondItem="DIY-VW-RJV" secondAttribute="bottom" constant="40" id="DIG-E1-qTb"/>
+                                    <constraint firstItem="HS5-CJ-pMy" firstAttribute="leading" secondItem="TQR-ze-EdI" secondAttribute="leading" constant="10" id="Dm9-ll-yng"/>
+                                    <constraint firstItem="cxk-bC-Iso" firstAttribute="leading" secondItem="a6O-BI-dB6" secondAttribute="trailing" constant="20" id="FXt-Oh-A1B"/>
+                                    <constraint firstItem="6jd-H4-Rdt" firstAttribute="top" secondItem="irW-cO-Cwb" secondAttribute="bottom" constant="10" id="RNA-RS-fRd"/>
+                                    <constraint firstAttribute="trailing" secondItem="irW-cO-Cwb" secondAttribute="trailing" constant="10" id="XFV-wg-dld"/>
+                                    <constraint firstAttribute="trailing" secondItem="HS5-CJ-pMy" secondAttribute="trailing" constant="10" id="aWv-MB-82h"/>
+                                    <constraint firstItem="DIY-VW-RJV" firstAttribute="leading" secondItem="TQR-ze-EdI" secondAttribute="leading" constant="20" id="ja2-x7-Q7f"/>
+                                    <constraint firstAttribute="width" constant="300" id="lfw-EC-pHv"/>
+                                    <constraint firstAttribute="trailing" secondItem="cxk-bC-Iso" secondAttribute="trailing" constant="20" id="mtC-he-SCO"/>
+                                    <constraint firstAttribute="height" constant="300" id="ohC-HW-8EO"/>
+                                    <constraint firstItem="cxk-bC-Iso" firstAttribute="top" secondItem="HS5-CJ-pMy" secondAttribute="bottom" constant="35" id="ovS-9W-PvE"/>
+                                    <constraint firstAttribute="trailing" secondItem="6jd-H4-Rdt" secondAttribute="trailing" constant="10" id="rIf-ef-x5G"/>
+                                    <constraint firstItem="irW-cO-Cwb" firstAttribute="leading" secondItem="TQR-ze-EdI" secondAttribute="leading" constant="10" id="rVx-bN-Od3"/>
+                                    <constraint firstItem="DIY-VW-RJV" firstAttribute="top" secondItem="TQR-ze-EdI" secondAttribute="top" constant="15" id="svz-gp-787"/>
+                                    <constraint firstItem="a6O-BI-dB6" firstAttribute="top" secondItem="HS5-CJ-pMy" secondAttribute="bottom" constant="35" id="wvf-zZ-YDb"/>
+                                    <constraint firstItem="6jd-H4-Rdt" firstAttribute="leading" secondItem="TQR-ze-EdI" secondAttribute="leading" constant="10" id="xee-TL-c2N"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fzQ-np-JSB" firstAttribute="centerX" secondItem="zgf-Az-6WS" secondAttribute="centerX" id="1ZP-st-Opm"/>
+                            <constraint firstItem="TQR-ze-EdI" firstAttribute="centerX" secondItem="zgf-Az-6WS" secondAttribute="centerX" id="2Gy-3x-1eB"/>
+                            <constraint firstItem="fzQ-np-JSB" firstAttribute="centerY" secondItem="zgf-Az-6WS" secondAttribute="centerY" id="BOw-9r-CXP"/>
+                            <constraint firstItem="TQR-ze-EdI" firstAttribute="centerY" secondItem="zgf-Az-6WS" secondAttribute="centerY" id="IpO-JX-rv7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zgf-Az-6WS"/>
+                    </view>
+                    <connections>
+                        <outlet property="confirmTextField" destination="HS5-CJ-pMy" id="0GT-p8-Gko"/>
+                        <outlet property="emailTextField" destination="DDN-bZ-lI9" id="Ldf-ky-egv"/>
+                        <outlet property="firstAlertUIView" destination="fzQ-np-JSB" id="Cm3-IS-r7d"/>
+                        <outlet property="passwordTextField" destination="6jd-H4-Rdt" id="Kif-zc-SeA"/>
+                        <outlet property="secondAlertUIView" destination="TQR-ze-EdI" id="HZP-xx-1iJ"/>
+                        <outlet property="verificationCodeTextField" destination="irW-cO-Cwb" id="JwB-uF-h0a"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UWm-6f-eT1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-322" y="-387"/>
+        </scene>
         <!--Sign In View Controller-->
         <scene sceneID="f3B-hG-VzG">
             <objects>
@@ -136,6 +319,9 @@
                                                 </fragment>
                                             </attributedString>
                                         </state>
+                                        <connections>
+                                            <segue destination="KoI-Pp-0FQ" kind="presentation" id="KqL-hA-fS2"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -219,6 +405,9 @@
                                         <state key="normal" title="Log in">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="signInActionButton:" destination="znS-kW-7a4" eventType="touchUpInside" id="V2Q-JJ-LwD"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -256,6 +445,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yvW-Ie-7q8"/>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="lf4-M0-jzR" id="J8u-7A-e9w"/>
+                        <outlet property="passwordTextField" destination="Gcn-O9-ie8" id="wGV-u5-C4v"/>
+                        <segue destination="Wmo-4Z-JWt" kind="presentation" identifier="forgettofirstalert_segue" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="3um-qY-Im9"/>
+                        <segue destination="z73-Mc-P8m" kind="presentation" identifier="logintohome_segue" id="mvZ-Hd-QYA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YAY-aZ-cBd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -348,7 +543,7 @@
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="UUH-2M-whl" firstAttribute="top" secondItem="qMb-CG-VtD" secondAttribute="bottom" constant="5" id="1p7-xK-GRZ"/>
                                     <constraint firstItem="epY-Yk-0pT" firstAttribute="leading" secondItem="Jj8-Fl-th5" secondAttribute="leading" id="2qs-KJ-he9"/>
@@ -404,6 +599,9 @@
                                                 </fragment>
                                             </attributedString>
                                         </state>
+                                        <connections>
+                                            <action selector="loginHereButtonAction:" destination="KoI-Pp-0FQ" eventType="touchUpInside" id="78V-eg-pK3"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -427,6 +625,9 @@
                                 <state key="normal" title="Sign Up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="signupButtonAction:" destination="KoI-Pp-0FQ" eventType="touchUpInside" id="wu7-5J-eoG"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fFe-si-XZU">
                                 <rect key="frame" x="37.5" y="420" width="300" height="50"/>
@@ -471,6 +672,7 @@
                                         </state>
                                         <connections>
                                             <action selector="TermsAndConditionAction:" destination="KoI-Pp-0FQ" eventType="touchUpInside" id="TLG-pL-ucQ"/>
+                                            <segue destination="TIe-2a-EOr" kind="showDetail" id="zxa-if-nKJ"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -503,18 +705,430 @@
                         <viewLayoutGuide key="safeArea" id="s7q-u0-GcW"/>
                     </view>
                     <connections>
+                        <outlet property="confirmTextField" destination="UUH-2M-whl" id="KJG-Wv-GaD"/>
+                        <outlet property="emailTextFiled" destination="h27-o9-P5j" id="LLO-qT-eMw"/>
+                        <outlet property="fullnameTextField" destination="0Ij-xP-Wd4" id="HAt-OW-06m"/>
+                        <outlet property="passwordTextField" destination="qMb-CG-VtD" id="hoG-rC-Ucq"/>
                         <outlet property="termsRectangleButton" destination="zYe-Vs-K9N" id="o5l-vR-PhF"/>
+                        <segue destination="znS-kW-7a4" kind="presentation" identifier="signuptologin_segue" id="gLd-0s-8j4"/>
+                        <segue destination="Qb0-PJ-uuA" kind="presentation" identifier="signuptoverify_segue" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="c9j-5r-Dti"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ycB-y2-pCa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1517.5999999999999" y="-387.25637181409297"/>
         </scene>
+        <!--Home View Controller-->
+        <scene sceneID="tgb-Sg-ZPM">
+            <objects>
+                <viewController id="z73-Mc-P8m" customClass="HomeViewController" customModule="DogOutMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xhd-QD-tkL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="GhQ-gb-ZR1"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c1g-pP-317" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="188" y="1070"/>
+        </scene>
+        <!--Verify Code View Controller-->
+        <scene sceneID="dnS-RT-ch0">
+            <objects>
+                <viewController id="Qb0-PJ-uuA" customClass="VerifyCodeViewController" customModule="DogOutMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="b9F-mk-Wuu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ng4-Uk-9Yu">
+                                <rect key="frame" x="37.5" y="268.5" width="300" height="150"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Enter Verification Code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xk8-MR-oDi">
+                                        <rect key="frame" x="5" y="15" width="290" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="290" id="b8G-aS-XwK"/>
+                                            <constraint firstAttribute="height" constant="25" id="msK-Tf-ixv"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Verification Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kgA-Sd-ZW7">
+                                        <rect key="frame" x="10" y="60" width="280" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="OxA-E0-qyC"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uHX-El-pK9">
+                                        <rect key="frame" x="217" y="112" width="63" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="79m-pE-UjA"/>
+                                            <constraint firstAttribute="width" constant="63" id="goS-VM-R0b"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="18"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancelButtonAction:" destination="Qb0-PJ-uuA" eventType="touchUpInside" id="j3r-4T-7zW"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JzJ-nE-hor">
+                                        <rect key="frame" x="147" y="112" width="50" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="GMh-xf-Ec9"/>
+                                            <constraint firstAttribute="width" constant="50" id="UEK-tc-JBB"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="18"/>
+                                        <state key="normal" title="Verify">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="verifyButtonAction:" destination="Qb0-PJ-uuA" eventType="touchUpInside" id="faN-n3-Yo3"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="xk8-MR-oDi" firstAttribute="top" secondItem="ng4-Uk-9Yu" secondAttribute="top" constant="15" id="2An-cT-fLQ"/>
+                                    <constraint firstItem="kgA-Sd-ZW7" firstAttribute="top" secondItem="xk8-MR-oDi" secondAttribute="bottom" constant="20" id="4zd-Ib-TBV"/>
+                                    <constraint firstAttribute="bottom" secondItem="uHX-El-pK9" secondAttribute="bottom" constant="8" id="8qE-uF-gyi"/>
+                                    <constraint firstAttribute="bottom" secondItem="JzJ-nE-hor" secondAttribute="bottom" constant="8" id="NIc-46-1mf"/>
+                                    <constraint firstAttribute="height" constant="150" id="RD5-xq-INH"/>
+                                    <constraint firstAttribute="width" constant="300" id="SI1-M5-CrO"/>
+                                    <constraint firstItem="kgA-Sd-ZW7" firstAttribute="leading" secondItem="ng4-Uk-9Yu" secondAttribute="leading" constant="10" id="SeN-LI-rOi"/>
+                                    <constraint firstAttribute="trailing" secondItem="kgA-Sd-ZW7" secondAttribute="trailing" constant="10" id="Sly-8r-9Mc"/>
+                                    <constraint firstItem="xk8-MR-oDi" firstAttribute="centerX" secondItem="ng4-Uk-9Yu" secondAttribute="centerX" id="YK0-ne-R02"/>
+                                    <constraint firstAttribute="trailing" secondItem="uHX-El-pK9" secondAttribute="trailing" constant="20" id="qU6-r4-0VX"/>
+                                    <constraint firstItem="uHX-El-pK9" firstAttribute="leading" secondItem="JzJ-nE-hor" secondAttribute="trailing" constant="20" id="rop-9J-SAL"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ng4-Uk-9Yu" firstAttribute="centerX" secondItem="dkk-z0-Lwt" secondAttribute="centerX" id="4FE-0B-7Xl"/>
+                            <constraint firstItem="ng4-Uk-9Yu" firstAttribute="centerY" secondItem="dkk-z0-Lwt" secondAttribute="centerY" id="GDy-3T-8pc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dkk-z0-Lwt"/>
+                    </view>
+                    <connections>
+                        <outlet property="verificationCodeTextField" destination="kgA-Sd-ZW7" id="ZHL-c8-eyc"/>
+                        <segue destination="znS-kW-7a4" kind="presentation" identifier="verifytologin_segue" id="cWO-Eh-WHy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PtQ-1D-aqe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="973.60000000000002" y="278.41079460269867"/>
+        </scene>
+        <!--Terms And Conditions View Controller-->
+        <scene sceneID="4a6-7V-WNB">
+            <objects>
+                <viewController id="TIe-2a-EOr" customClass="TermsAndConditionsViewController" customModule="DogOutMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rl2-hL-0jc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jSQ-NY-yCc">
+                                <rect key="frame" x="0.0" y="20" width="375" height="80"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="JKR-4U-tKJ">
+                                        <rect key="frame" x="97.5" y="10" width="180" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="180" id="Xx4-c0-6zV"/>
+                                            <constraint firstAttribute="height" constant="60" id="vli-9W-BDt"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sn3-Pk-U2T">
+                                        <rect key="frame" x="305" y="0.0" width="70" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="7Fq-5o-j5t"/>
+                                            <constraint firstAttribute="width" constant="70" id="QiB-Wq-10E"/>
+                                        </constraints>
+                                        <state key="normal" image="close_terms.png"/>
+                                        <connections>
+                                            <action selector="closeButtonAction:" destination="TIe-2a-EOr" eventType="touchUpInside" id="Mho-t2-KLh"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.98431372549019602" blue="0.41568627450980389" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="JKR-4U-tKJ" firstAttribute="centerX" secondItem="jSQ-NY-yCc" secondAttribute="centerX" id="3xp-VW-X4y"/>
+                                    <constraint firstAttribute="height" constant="80" id="htv-OG-iAf"/>
+                                    <constraint firstItem="JKR-4U-tKJ" firstAttribute="centerY" secondItem="jSQ-NY-yCc" secondAttribute="centerY" id="mBC-fr-oOW"/>
+                                    <constraint firstItem="Sn3-Pk-U2T" firstAttribute="top" secondItem="jSQ-NY-yCc" secondAttribute="top" id="nUX-Gd-A68"/>
+                                    <constraint firstAttribute="trailing" secondItem="Sn3-Pk-U2T" secondAttribute="trailing" id="rLp-4s-fIg"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bSM-zQ-6yN">
+                                <rect key="frame" x="10" y="100" width="355" height="567"/>
+                                <subviews>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5oa-C5-mF6">
+                                        <rect key="frame" x="0.0" y="0.0" width="355" height="567"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TERMS AND CONDITIONS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pra-AG-EE7">
+                                                <rect key="frame" x="77.5" y="10" width="200" height="18"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="200" id="mzI-Py-L9P"/>
+                                                    <constraint firstAttribute="height" constant="18" id="zpT-zM-gnc"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="16"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qOv-qh-K36">
+                                                <rect key="frame" x="0.0" y="38" width="355" height="2784.5"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment>
+                                                        <string key="content">Welcome to Dogout
+</string>
+                                                        <attributes>
+                                                            <font key="NSFont" size="14" name="Arial-BoldMT"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="468" defaultTabInterval="36" tighteningFactorForTruncation="0.0">
+                                                                <tabStops/>
+                                                            </paragraphStyle>
+                                                            <integer key="NSUnderline" value="1"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment>
+                                                        <string key="content">
+These terms and conditions outline the rules and regulations for the use of Dogout's app.  
+
+Dogout is located at: Unit 212 Southbank House Black Prince Road, Vauxhall , LondonLondon - SE1 7SJ, United Kingdom
+	
+By accessing this app we assume you accept these terms and conditions in full. Do not continue to use Dogout’s app if you do not accept all of the terms and conditions stated on this page.
+
+The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and any or all Agreements: “Client”, “You” and “Your” refers to you, the person accessing this app and accepting the Company’s terms and conditions. “The Company”, “Ourselves”, “We”, “Our” and “Us”, refers to our Company. “Party”, “Parties”, or “Us”, refers to both the Client and ourselves, or either the Client or ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner, whether by formal meetings of a fixed duration, or any other means, for the express purpose of meeting the Client’s needs in respect of provision of the Company’s stated services/products, in accordance with and subject to, prevailing law of United Kingdom. Any use of the above terminology or other words in the singular, plural, capitalisation and/or he/she or they, are taken as interchangeable and therefore as referring to same. License: Unless otherwise stated, Dogout and/or it’s licensors own the intellectual property rights for all material on Dogout. All intellectual property rights are reserved. You may view and/or print pages from </string>
+                                                        <attributes>
+                                                            <font key="NSFont" size="14" name="ArialMT"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="468" defaultTabInterval="36" tighteningFactorForTruncation="0.0">
+                                                                <tabStops/>
+                                                            </paragraphStyle>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content="http://dogout.co">
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <font key="NSFont" size="14" name="ArialMT"/>
+                                                            <url key="NSLink" string="http://dogout.co"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="468" defaultTabInterval="36" tighteningFactorForTruncation="0.0">
+                                                                <tabStops/>
+                                                            </paragraphStyle>
+                                                            <integer key="NSUnderline" value="1"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment>
+                                                        <string key="content"> or the app for your own personal use subject to restrictions set in these terms and conditions.
+	
+You must not:
+	
+Republish material from http://dogout.co or the Dogout app
+
+Sell, rent or sub-license material from http://dogout.co or the Dogout app
+
+Reproduce, duplicate or copy material from http://dogout.co or the Dogout app
+
+Redistribute content from Dogout (unless content is specifically made for redistribution).
+
+</string>
+                                                        <attributes>
+                                                            <font key="NSFont" size="14" name="ArialMT"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="468" defaultTabInterval="36" tighteningFactorForTruncation="0.0">
+                                                                <tabStops/>
+                                                            </paragraphStyle>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment>
+                                                        <string key="content">User Comments
+</string>
+                                                        <attributes>
+                                                            <font key="NSFont" size="14" name="Arial-BoldMT"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="468" defaultTabInterval="36" tighteningFactorForTruncation="0.0">
+                                                                <tabStops/>
+                                                            </paragraphStyle>
+                                                            <integer key="NSUnderline" value="1"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment>
+                                                        <string key="content">
+This Agreement shall begin on the date hereof.
+
+Certain parts of this website offer the opportunity for users to post and exchange opinions, information, material and data ('Comments') in areas of the app. Dogout does not screen, edit, publish or review Comments prior to their appearance on the website and Comments do not reflect the views or opinions of Dogout, its agents or affiliates. Comments reflect the view and opinion of the person who posts such view or opinion. To the extent permitted by applicable laws Dogout shall not be responsible or liable for the Comments or for any loss cost, liability, damages or expenses caused and or suffered as a result of any use of and/or posting of and/or appearance of the Comments on this website.
+
+Dogout reserves the right to monitor all Comments and to remove any Comments which it considers in its absolute discretion to be inappropriate, offensive or otherwise in breach of these Terms and Conditions.
+
+You warrant and represent that:
+			
+You are entitled to post the Comments on our app and have all necessary licenses and consents to do so;
+
+The Comments do not infringe any intellectual property right, including without limitation copyright, patent or trademark, or other proprietary right of any third party;
+
+The Comments do not contain any defamatory, libelous, offensive, indecent or otherwise unlawful material or material which is an invasion of privacy
+
+The Comments will not be used to solicit or promote business or custom or present commercial activities or unlawful activity.		
+
+You hereby grant to Dogout a non-exclusive royalty-free license to use, reproduce, edit and authorize others to use, reproduce and edit any of your Comments in any and all forms, formats or media.
+	
+</string>
+                                                        <attributes>
+                                                            <font key="NSFont" size="14" name="ArialMT"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="468" defaultTabInterval="36" tighteningFactorForTruncation="0.0">
+                                                                <tabStops/>
+                                                            </paragraphStyle>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content="Reservation of Rights">
+                                                        <attributes>
+                                                            <font key="NSFont" size="14" name="Arial-BoldMT"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="468" defaultTabInterval="36" tighteningFactorForTruncation="0.0">
+                                                                <tabStops/>
+                                                            </paragraphStyle>
+                                                            <integer key="NSUnderline" value="1"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment>
+                                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                                        <attributes>
+                                                            <font key="NSFont" size="14" name="ArialMT"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="468" defaultTabInterval="36" tighteningFactorForTruncation="0.0">
+                                                                <tabStops/>
+                                                            </paragraphStyle>
+                                                            <integer key="NSUnderline" value="1"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment>
+                                                        <string key="content">
+We reserve the right at any time and in its sole discretion to request that you remove all links or any particular link to our Web site. You agree to immediately remove all links to our Web site upon such request. We also reserve the right to amend these terms and conditions and its linking policy at any time. By continuing to link to our Web site, you agree to be bound to and abide by these linking terms and conditions.
+
+Removal of links from our website
+
+If you find any link on our Web site or any linked web site objectionable for any reason, you may contact us about this. We will consider requests to remove links but will have no obligation to do so or to respond directly to you.
+
+Whilst we endeavour to ensure that the information on this website is correct, we do not warrant its completeness or accuracy; nor do we commit to ensuring that the website remains available or that the material on the website is kept up to date.
+
+Content Liability
+	
+We shall have no responsibility or liability for any content appearing on your Web site. You agree to indemnify and defend us against all claims arising out of or based upon your Website. No link(s) may appear on any page on your Web site or within any context containing content or materials that may be interpreted as libelous, obscene or criminal, or which infringes, otherwise violates, or advocates the infringement or other violation of, any third party rights.
+
+Disclaimer
+
+To the maximum extent permitted by applicable law, we exclude all representations, warranties and conditions relating to our website and the use of this website (including, without limitation, any warranties implied by law in respect of satisfactory quality, fitness for purpose and/or the use of reasonable care and skill). Nothing in this disclaimer will:
+	
+limit or exclude our or your liability for death or personal injury resulting from negligence;
+
+limit or exclude our or your liability for fraud or fraudulent misrepresentation;
+
+limit any of our or your liabilities in any way that is not permitted under applicable law; or
+
+exclude any of our or your liabilities that may not be excluded under applicable law.
+	
+The limitations and exclusions of liability set out in this Section and elsewhere in this disclaimer: 
+
+are subject to the preceding paragraph; and (b) govern all liabilities arising under the disclaimer or
+
+in relation to the subject matter of this disclaimer, including liabilities arising in contract, in tort (including negligence) and for breach of statutory duty.
+
+To the extent that the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.
+	
+</string>
+                                                        <attributes>
+                                                            <font key="NSFont" size="14" name="ArialMT"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="468" defaultTabInterval="36" tighteningFactorForTruncation="0.0">
+                                                                <tabStops/>
+                                                            </paragraphStyle>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content="Credit &amp; Contact Information">
+                                                        <attributes>
+                                                            <font key="NSFont" size="14" name="Arial-BoldMT"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="468" defaultTabInterval="36" tighteningFactorForTruncation="0.0">
+                                                                <tabStops/>
+                                                            </paragraphStyle>
+                                                            <integer key="NSUnderline" value="1"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment>
+                                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                                        <attributes>
+                                                            <font key="NSFont" size="14" name="ArialMT"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="468" defaultTabInterval="36" tighteningFactorForTruncation="0.0">
+                                                                <tabStops/>
+                                                            </paragraphStyle>
+                                                            <integer key="NSUnderline" value="1"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment>
+                                                        <string key="content">	
+This Terms and conditions page was created at termsandconditionstemplate.com generator. If you have any queries regarding any of our terms, please contact us.</string>
+                                                        <attributes>
+                                                            <font key="NSFont" size="14" name="ArialMT"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="468" defaultTabInterval="36" tighteningFactorForTruncation="0.0">
+                                                                <tabStops/>
+                                                            </paragraphStyle>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="pra-AG-EE7" firstAttribute="centerX" secondItem="5oa-C5-mF6" secondAttribute="centerX" id="1uC-mS-vRN"/>
+                                            <constraint firstAttribute="trailing" secondItem="qOv-qh-K36" secondAttribute="trailing" id="Oga-io-SFb"/>
+                                            <constraint firstItem="pra-AG-EE7" firstAttribute="top" secondItem="5oa-C5-mF6" secondAttribute="top" constant="10" id="Qzd-Zf-xI1"/>
+                                            <constraint firstAttribute="bottom" secondItem="qOv-qh-K36" secondAttribute="bottom" id="jxw-vm-LJs"/>
+                                            <constraint firstItem="qOv-qh-K36" firstAttribute="top" secondItem="pra-AG-EE7" secondAttribute="bottom" constant="10" id="oNc-Ba-sGi"/>
+                                            <constraint firstItem="qOv-qh-K36" firstAttribute="leading" secondItem="5oa-C5-mF6" secondAttribute="leading" id="r4Y-zA-6Jo"/>
+                                        </constraints>
+                                    </scrollView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="qOv-qh-K36" firstAttribute="width" secondItem="bSM-zQ-6yN" secondAttribute="width" id="AKZ-XJ-2A1"/>
+                                    <constraint firstItem="5oa-C5-mF6" firstAttribute="top" secondItem="bSM-zQ-6yN" secondAttribute="top" id="ByU-vD-vMh"/>
+                                    <constraint firstItem="5oa-C5-mF6" firstAttribute="leading" secondItem="bSM-zQ-6yN" secondAttribute="leading" id="HOF-fG-Cw1"/>
+                                    <constraint firstAttribute="trailing" secondItem="5oa-C5-mF6" secondAttribute="trailing" id="WTw-Sc-XsD"/>
+                                    <constraint firstAttribute="bottom" secondItem="5oa-C5-mF6" secondAttribute="bottom" id="m4t-HX-1sQ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="jSQ-NY-yCc" firstAttribute="top" secondItem="bBf-dq-FDE" secondAttribute="top" id="C6m-mB-7uK"/>
+                            <constraint firstItem="bSM-zQ-6yN" firstAttribute="top" secondItem="jSQ-NY-yCc" secondAttribute="bottom" id="D1z-mU-XZb"/>
+                            <constraint firstItem="jSQ-NY-yCc" firstAttribute="leading" secondItem="bBf-dq-FDE" secondAttribute="leading" id="EKw-Sc-Rug"/>
+                            <constraint firstAttribute="trailing" secondItem="bSM-zQ-6yN" secondAttribute="trailing" constant="10" id="Yzv-7H-r1R"/>
+                            <constraint firstItem="bSM-zQ-6yN" firstAttribute="leading" secondItem="bBf-dq-FDE" secondAttribute="leading" constant="10" id="bvs-nw-cMy"/>
+                            <constraint firstItem="jSQ-NY-yCc" firstAttribute="trailing" secondItem="bBf-dq-FDE" secondAttribute="trailing" id="gui-UQ-K8B"/>
+                            <constraint firstItem="bSM-zQ-6yN" firstAttribute="bottom" secondItem="bBf-dq-FDE" secondAttribute="bottom" id="zj7-oC-w4y"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bBf-dq-FDE"/>
+                    </view>
+                    <connections>
+                        <segue destination="KoI-Pp-0FQ" kind="presentation" identifier="termstosignup_segue" id="gyb-XZ-ZMV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KgE-SQ-P0j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2244" y="-387.25637181409297"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="close_terms.png" width="142" height="38.535209655761719"/>
         <image name="email.png" width="203" height="203"/>
         <image name="lock.png" width="203" height="203"/>
         <image name="logo.png" width="400" height="138"/>
         <image name="user.png" width="203" height="203"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="KqL-hA-fS2"/>
+        <segue reference="gLd-0s-8j4"/>
+    </inferredMetricsTieBreakers>
 </document>

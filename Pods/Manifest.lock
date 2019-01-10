@@ -1,5 +1,21 @@
 PODS:
   - AARatingBar (0.1.0)
+  - AFNetworking (3.2.1):
+    - AFNetworking/NSURLSession (= 3.2.1)
+    - AFNetworking/Reachability (= 3.2.1)
+    - AFNetworking/Security (= 3.2.1)
+    - AFNetworking/Serialization (= 3.2.1)
+    - AFNetworking/UIKit (= 3.2.1)
+  - AFNetworking/NSURLSession (3.2.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.2.1)
+  - AFNetworking/Security (3.2.1)
+  - AFNetworking/Serialization (3.2.1)
+  - AFNetworking/UIKit (3.2.1):
+    - AFNetworking/NSURLSession
+  - Alamofire (5.0.0.beta.1)
   - ImageSlideshow (1.7.0):
     - ImageSlideshow/Core (= 1.7.0)
   - ImageSlideshow/Core (1.7.0)
@@ -12,20 +28,26 @@ PODS:
 
 DEPENDENCIES:
   - AARatingBar
+  - AFNetworking (~> 3.0)
+  - Alamofire (~> 5.0.0.beta.1)
   - ImageSlideshow (~> 1.6)
   - ImageSlideshow/SDWebImage
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AARatingBar
+    - AFNetworking
+    - Alamofire
     - ImageSlideshow
     - SDWebImage
 
 SPEC CHECKSUMS:
   AARatingBar: dd2f4b489478f5206930bb5f8f67b4db476265c8
+  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  Alamofire: 2ef6d6c984c5d21c366e9b41a9ae7dfee2b67a44
   ImageSlideshow: f8eec5e37a980f60923b585ff23b0e140fd24018
   SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
 
-PODFILE CHECKSUM: 078603a6c394564b4b5d2c82fa6471cdfc1d5f96
+PODFILE CHECKSUM: 4ae8fd409c9bd3960e1f58c9d65a2ad8e99aee37
 
 COCOAPODS: 1.6.0.beta.2
