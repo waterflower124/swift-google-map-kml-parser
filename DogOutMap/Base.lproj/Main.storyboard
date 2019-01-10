@@ -725,13 +725,53 @@
                     <view key="view" contentMode="scaleToFill" id="xhd-QD-tkL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AAk-Ui-Ik1">
+                                <rect key="frame" x="0.0" y="20" width="375" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mXB-ME-JRC">
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="kUq-19-Dvk"/>
+                                            <constraint firstAttribute="width" constant="60" id="udM-5l-UkV"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="15" minY="15" maxX="15" maxY="15"/>
+                                        <state key="normal" title="Button" image="search.png"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="guC-b4-cpd">
+                                        <rect key="frame" x="315" y="0.0" width="60" height="60"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="8NV-XO-CLj"/>
+                                            <constraint firstAttribute="width" constant="60" id="kCs-F2-TER"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                        <state key="normal" image="plus.png"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.98431372549019602" blue="0.41568627450980389" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="mXB-ME-JRC" firstAttribute="leading" secondItem="AAk-Ui-Ik1" secondAttribute="leading" id="R19-8o-Ggd"/>
+                                    <constraint firstAttribute="height" constant="60" id="ktT-q4-qcg"/>
+                                    <constraint firstAttribute="trailing" secondItem="guC-b4-cpd" secondAttribute="trailing" id="m3u-N5-ONa"/>
+                                    <constraint firstItem="guC-b4-cpd" firstAttribute="top" secondItem="AAk-Ui-Ik1" secondAttribute="top" id="roE-SC-D6G"/>
+                                    <constraint firstItem="mXB-ME-JRC" firstAttribute="top" secondItem="AAk-Ui-Ik1" secondAttribute="top" id="ver-ca-BbY"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="AAk-Ui-Ik1" firstAttribute="top" secondItem="GhQ-gb-ZR1" secondAttribute="top" id="1ko-nV-usg"/>
+                            <constraint firstItem="AAk-Ui-Ik1" firstAttribute="trailing" secondItem="GhQ-gb-ZR1" secondAttribute="trailing" id="AdE-II-Eob"/>
+                            <constraint firstItem="AAk-Ui-Ik1" firstAttribute="leading" secondItem="GhQ-gb-ZR1" secondAttribute="leading" id="GdG-OQ-AUv"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="GhQ-gb-ZR1"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c1g-pP-317" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="188" y="1070"/>
+            <point key="canvasLocation" x="188" y="1069.1154422788607"/>
         </scene>
         <!--Verify Code View Controller-->
         <scene sceneID="dnS-RT-ch0">
@@ -894,14 +934,14 @@
                                                         </attributes>
                                                     </fragment>
                                                     <fragment>
-                                                        <string key="content">
+                                                        <mutableString key="content">
 These terms and conditions outline the rules and regulations for the use of Dogout's app.  
 
 Dogout is located at: Unit 212 Southbank House Black Prince Road, Vauxhall , LondonLondon - SE1 7SJ, United Kingdom
 	
 By accessing this app we assume you accept these terms and conditions in full. Do not continue to use Dogout’s app if you do not accept all of the terms and conditions stated on this page.
 
-The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and any or all Agreements: “Client”, “You” and “Your” refers to you, the person accessing this app and accepting the Company’s terms and conditions. “The Company”, “Ourselves”, “We”, “Our” and “Us”, refers to our Company. “Party”, “Parties”, or “Us”, refers to both the Client and ourselves, or either the Client or ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner, whether by formal meetings of a fixed duration, or any other means, for the express purpose of meeting the Client’s needs in respect of provision of the Company’s stated services/products, in accordance with and subject to, prevailing law of United Kingdom. Any use of the above terminology or other words in the singular, plural, capitalisation and/or he/she or they, are taken as interchangeable and therefore as referring to same. License: Unless otherwise stated, Dogout and/or it’s licensors own the intellectual property rights for all material on Dogout. All intellectual property rights are reserved. You may view and/or print pages from </string>
+The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and any or all Agreements: “Client”, “You” and “Your” refers to you, the person accessing this app and accepting the Company’s terms and conditions. “The Company”, “Ourselves”, “We”, “Our” and “Us”, refers to our Company. “Party”, “Parties”, or “Us”, refers to both the Client and ourselves, or either the Client or ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner, whether by formal meetings of a fixed duration, or any other means, for the express purpose of meeting the Client’s needs in respect of provision of the Company’s stated services/products, in accordance with and subject to, prevailing law of United Kingdom. Any use of the above terminology or other words in the singular, plural, capitalisation and/or he/she or they, are taken as interchangeable and therefore as referring to same. License: Unless otherwise stated, Dogout and/or it’s licensors own the intellectual property rights for all material on Dogout. All intellectual property rights are reserved. You may view and/or print pages from </mutableString>
                                                         <attributes>
                                                             <font key="NSFont" size="14" name="ArialMT"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="468" defaultTabInterval="36" tighteningFactorForTruncation="0.0">
@@ -917,7 +957,6 @@ The following terminology applies to these Terms and Conditions, Privacy Stateme
                                                             <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="468" defaultTabInterval="36" tighteningFactorForTruncation="0.0">
                                                                 <tabStops/>
                                                             </paragraphStyle>
-                                                            <integer key="NSUnderline" value="1"/>
                                                         </attributes>
                                                     </fragment>
                                                     <fragment>
@@ -953,7 +992,7 @@ Redistribute content from Dogout (unless content is specifically made for redist
                                                         </attributes>
                                                     </fragment>
                                                     <fragment>
-                                                        <string key="content">
+                                                        <mutableString key="content">
 This Agreement shall begin on the date hereof.
 
 Certain parts of this website offer the opportunity for users to post and exchange opinions, information, material and data ('Comments') in areas of the app. Dogout does not screen, edit, publish or review Comments prior to their appearance on the website and Comments do not reflect the views or opinions of Dogout, its agents or affiliates. Comments reflect the view and opinion of the person who posts such view or opinion. To the extent permitted by applicable laws Dogout shall not be responsible or liable for the Comments or for any loss cost, liability, damages or expenses caused and or suffered as a result of any use of and/or posting of and/or appearance of the Comments on this website.
@@ -972,7 +1011,7 @@ The Comments will not be used to solicit or promote business or custom or presen
 
 You hereby grant to Dogout a non-exclusive royalty-free license to use, reproduce, edit and authorize others to use, reproduce and edit any of your Comments in any and all forms, formats or media.
 	
-</string>
+</mutableString>
                                                         <attributes>
                                                             <font key="NSFont" size="14" name="ArialMT"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="468" defaultTabInterval="36" tighteningFactorForTruncation="0.0">
@@ -1002,7 +1041,7 @@ Cg
                                                         </attributes>
                                                     </fragment>
                                                     <fragment>
-                                                        <string key="content">
+                                                        <mutableString key="content">
 We reserve the right at any time and in its sole discretion to request that you remove all links or any particular link to our Web site. You agree to immediately remove all links to our Web site upon such request. We also reserve the right to amend these terms and conditions and its linking policy at any time. By continuing to link to our Web site, you agree to be bound to and abide by these linking terms and conditions.
 
 Removal of links from our website
@@ -1035,7 +1074,7 @@ in relation to the subject matter of this disclaimer, including liabilities aris
 
 To the extent that the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.
 	
-</string>
+</mutableString>
                                                         <attributes>
                                                             <font key="NSFont" size="14" name="ArialMT"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tailIndent="468" defaultTabInterval="36" tighteningFactorForTruncation="0.0">
@@ -1125,10 +1164,12 @@ This Terms and conditions page was created at termsandconditionstemplate.com gen
         <image name="email.png" width="203" height="203"/>
         <image name="lock.png" width="203" height="203"/>
         <image name="logo.png" width="400" height="138"/>
+        <image name="plus.png" width="96" height="96"/>
+        <image name="search.png" width="400" height="400"/>
         <image name="user.png" width="203" height="203"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="KqL-hA-fS2"/>
-        <segue reference="gLd-0s-8j4"/>
+        <segue reference="cWO-Eh-WHy"/>
     </inferredMetricsTieBreakers>
 </document>
