@@ -35,6 +35,10 @@
 		2328849F21E627E500E5E7C1 /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 2328849D21E627E400E5E7C1 /* lock.png */; };
 		232884A021E627E500E5E7C1 /* email.png in Resources */ = {isa = PBXBuildFile; fileRef = 2328849E21E627E400E5E7C1 /* email.png */; };
 		232884A221E64A2B00E5E7C1 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 232884A121E64A2800E5E7C1 /* user.png */; };
+		23296F7E21E7989E0013AAC8 /* left-arrow-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 23296F7D21E798990013AAC8 /* left-arrow-black.png */; };
+		23296F8021E7A3B20013AAC8 /* dog.png in Resources */ = {isa = PBXBuildFile; fileRef = 23296F7F21E7A3B00013AAC8 /* dog.png */; };
+		23296F8221E7A3DE0013AAC8 /* marker.png in Resources */ = {isa = PBXBuildFile; fileRef = 23296F8121E7A3DE0013AAC8 /* marker.png */; };
+		23296F8421E7EE280013AAC8 /* mapInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23296F8321E7EE280013AAC8 /* mapInfo.swift */; };
 		2373C75D21E6678A00C1F6DF /* ForgetFirstAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2373C75C21E6678A00C1F6DF /* ForgetFirstAlertViewController.swift */; };
 		2373C76121E6994000C1F6DF /* TermsAndConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2373C76021E6994000C1F6DF /* TermsAndConditionsViewController.swift */; };
 		2373C76321E6D9D200C1F6DF /* close_terms.png in Resources */ = {isa = PBXBuildFile; fileRef = 2373C76221E6D9D000C1F6DF /* close_terms.png */; };
@@ -96,6 +100,10 @@
 		2328849D21E627E400E5E7C1 /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock.png; sourceTree = "<group>"; };
 		2328849E21E627E400E5E7C1 /* email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = email.png; sourceTree = "<group>"; };
 		232884A121E64A2800E5E7C1 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
+		23296F7D21E798990013AAC8 /* left-arrow-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left-arrow-black.png"; sourceTree = "<group>"; };
+		23296F7F21E7A3B00013AAC8 /* dog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dog.png; sourceTree = "<group>"; };
+		23296F8121E7A3DE0013AAC8 /* marker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marker.png; sourceTree = "<group>"; };
+		23296F8321E7EE280013AAC8 /* mapInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapInfo.swift; sourceTree = "<group>"; };
 		2373C75C21E6678A00C1F6DF /* ForgetFirstAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetFirstAlertViewController.swift; sourceTree = "<group>"; };
 		2373C76021E6994000C1F6DF /* TermsAndConditionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsViewController.swift; sourceTree = "<group>"; };
 		2373C76221E6D9D000C1F6DF /* close_terms.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close_terms.png; sourceTree = "<group>"; };
@@ -195,6 +203,7 @@
 				2373C76021E6994000C1F6DF /* TermsAndConditionsViewController.swift */,
 				2373C76421E6DE9900C1F6DF /* VerifyCodeViewController.swift */,
 				2373C76621E74EC100C1F6DF /* HomeViewController.swift */,
+				23296F8321E7EE280013AAC8 /* mapInfo.swift */,
 			);
 			path = screens;
 			sourceTree = "<group>";
@@ -202,6 +211,9 @@
 		2328847621E6091F00E5E7C1 /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				23296F8121E7A3DE0013AAC8 /* marker.png */,
+				23296F7F21E7A3B00013AAC8 /* dog.png */,
+				23296F7D21E798990013AAC8 /* left-arrow-black.png */,
 				2373C76221E6D9D000C1F6DF /* close_terms.png */,
 				232884A121E64A2800E5E7C1 /* user.png */,
 				2328849E21E627E400E5E7C1 /* email.png */,
@@ -352,8 +364,10 @@
 				2328849521E60B3200E5E7C1 /* sports.png in Resources */,
 				2328849121E60B3200E5E7C1 /* hotel.png in Resources */,
 				2328845221E6032800E5E7C1 /* LaunchScreen.storyboard in Resources */,
+				23296F8221E7A3DE0013AAC8 /* marker.png in Resources */,
 				2328849421E60B3200E5E7C1 /* left-arrow.png in Resources */,
 				2328849221E60B3200E5E7C1 /* plus.png in Resources */,
+				23296F7E21E7989E0013AAC8 /* left-arrow-black.png in Resources */,
 				2328848E21E60B3200E5E7C1 /* supermarket.png in Resources */,
 				2328849021E60B3200E5E7C1 /* workspace.png in Resources */,
 				2328849A21E60B3200E5E7C1 /* cancel.png in Resources */,
@@ -369,6 +383,7 @@
 				2328849921E60B3200E5E7C1 /* logo.png in Resources */,
 				2328849F21E627E500E5E7C1 /* lock.png in Resources */,
 				2328849821E60B3200E5E7C1 /* eat.png in Resources */,
+				23296F8021E7A3B20013AAC8 /* dog.png in Resources */,
 				2328849721E60B3200E5E7C1 /* activity.png in Resources */,
 				2328848F21E60B3200E5E7C1 /* shop.png in Resources */,
 				232884A021E627E500E5E7C1 /* email.png in Resources */,
@@ -459,6 +474,7 @@
 				2328844821E6032100E5E7C1 /* AppDelegate.swift in Sources */,
 				2328847C21E60ADA00E5E7C1 /* SignUpViewController.swift in Sources */,
 				2328847A21E60ACA00E5E7C1 /* SignInViewController.swift in Sources */,
+				23296F8421E7EE280013AAC8 /* mapInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -635,6 +651,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = DogOutMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -653,6 +670,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = DogOutMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

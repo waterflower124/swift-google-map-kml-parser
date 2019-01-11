@@ -32,54 +32,57 @@ class SignInViewController: UIViewController {
     }
     
     @IBAction func signInActionButton(_ sender: Any) {
-        emailText = emailTextField.text!
-        passwordText = passwordTextField.text!
-        if(emailText.isEmpty) {
-            createAlert(title: "Warning!", message: "Please input your email address.", success: false)
-            return
-        }
-        if(!isValidEmail(email_str: emailText)) {
-            createAlert(title: "Warning!", message: "Please input valid email address.", success: false)
-            return
-        }
-        if(passwordText.isEmpty) {
-            createAlert(title: "Warning!", message: "Please input your password.", success: false)
-            return
-        }
-        if( passwordText.count < 6 ) {
-            createAlert(title: "Warning!", message: "Password have to be at least 6 characters.", success: false)
-            return
-        }
         
-        startActivityIndicator()
+        self.performSegue(withIdentifier: "logintohome_segue", sender: self)
         
-        let requestDic = ["email": emailText, "password": passwordText]
-        AF.request("http://u900336547.hostingerapp.com/api/login", method: .post, parameters: requestDic, encoding: JSONEncoding.default, headers: nil).responseJSON
-            {
-                response in
-                switch response.result {
-                case .failure(let error):
-                    print(error)
-                    self.stopActivityIndicator()
-                case .success(let responseObject):
-                    self.stopActivityIndicator()
-                    let responseDict = responseObject as! NSDictionary
-                    
-                    let status = responseDict["status"] as! String
-                    if(status == "success") {
-                        self.performSegue(withIdentifier: "logintohome_segue", sender: self)
-                    } else {
-                        let error_type = responseDict["error_type"] as! String
-                        if(error_type == "no_user") {
-                            self.createAlert(title: "Warning!", message: "You are not registered. Please create an account.", success: false)
-                        } else if(error_type == "no_activated") {
-                            self.createAlert(title: "Warning!", message: "User is not activated. Please check your mail address and password.", success: false)
-                        } else if(error_type == "wrong_password") {
-                            self.createAlert(title: "Warning!", message: "Password is incorrect. Please try again.", success: false)
-                        }
-                    }
-                }
-        }
+//        emailText = emailTextField.text!
+//        passwordText = passwordTextField.text!
+//        if(emailText.isEmpty) {
+//            createAlert(title: "Warning!", message: "Please input your email address.", success: false)
+//            return
+//        }
+//        if(!isValidEmail(email_str: emailText)) {
+//            createAlert(title: "Warning!", message: "Please input valid email address.", success: false)
+//            return
+//        }
+//        if(passwordText.isEmpty) {
+//            createAlert(title: "Warning!", message: "Please input your password.", success: false)
+//            return
+//        }
+//        if( passwordText.count < 6 ) {
+//            createAlert(title: "Warning!", message: "Password have to be at least 6 characters.", success: false)
+//            return
+//        }
+//
+//        startActivityIndicator()
+//
+//        let requestDic = ["email": emailText, "password": passwordText]
+//        AF.request("http://u900336547.hostingerapp.com/api/login", method: .post, parameters: requestDic, encoding: JSONEncoding.default, headers: nil).responseJSON
+//            {
+//                response in
+//                switch response.result {
+//                case .failure(let error):
+//                    print(error)
+//                    self.stopActivityIndicator()
+//                case .success(let responseObject):
+//                    self.stopActivityIndicator()
+//                    let responseDict = responseObject as! NSDictionary
+//
+//                    let status = responseDict["status"] as! String
+//                    if(status == "success") {
+//                        self.performSegue(withIdentifier: "logintohome_segue", sender: self)
+//                    } else {
+//                        let error_type = responseDict["error_type"] as! String
+//                        if(error_type == "no_user") {
+//                            self.createAlert(title: "Warning!", message: "You are not registered. Please create an account.", success: false)
+//                        } else if(error_type == "no_activated") {
+//                            self.createAlert(title: "Warning!", message: "User is not activated. Please check your mail address and password.", success: false)
+//                        } else if(error_type == "wrong_password") {
+//                            self.createAlert(title: "Warning!", message: "Password is incorrect. Please try again.", success: false)
+//                        }
+//                    }
+//                }
+//        }
         
     }
     
