@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		231545FD21EE607D0025E711 /* dog_foot.png in Resources */ = {isa = PBXBuildFile; fileRef = 231545FC21EE607A0025E711 /* dog_foot.png */; };
 		2328844821E6032100E5E7C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2328844721E6032100E5E7C1 /* AppDelegate.swift */; };
 		2328844A21E6032100E5E7C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2328844921E6032100E5E7C1 /* ViewController.swift */; };
 		2328844D21E6032100E5E7C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2328844B21E6032100E5E7C1 /* Main.storyboard */; };
@@ -66,6 +67,7 @@
 
 /* Begin PBXFileReference section */
 		068EFB9BD31AF7FFC675D7E7 /* Pods-DogOutMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DogOutMap.debug.xcconfig"; path = "Target Support Files/Pods-DogOutMap/Pods-DogOutMap.debug.xcconfig"; sourceTree = "<group>"; };
+		231545FC21EE607A0025E711 /* dog_foot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dog_foot.png; sourceTree = "<group>"; };
 		2328844421E6032100E5E7C1 /* DogOutMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogOutMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2328844721E6032100E5E7C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2328844921E6032100E5E7C1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 		2328847621E6091F00E5E7C1 /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				231545FC21EE607A0025E711 /* dog_foot.png */,
 				23296F8121E7A3DE0013AAC8 /* marker.png */,
 				23296F7F21E7A3B00013AAC8 /* dog.png */,
 				23296F7D21E798990013AAC8 /* left-arrow-black.png */,
@@ -362,6 +365,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2328849521E60B3200E5E7C1 /* sports.png in Resources */,
+				231545FD21EE607D0025E711 /* dog_foot.png in Resources */,
 				2328849121E60B3200E5E7C1 /* hotel.png in Resources */,
 				2328845221E6032800E5E7C1 /* LaunchScreen.storyboard in Resources */,
 				23296F8221E7A3DE0013AAC8 /* marker.png in Resources */,
