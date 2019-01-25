@@ -204,4 +204,12 @@ import UIKit
         let rating = bounds.size.width * value / _maxValue
         self.filledView.frame.size.width = rating
     }
+    
+    public func updateValue(with newValue: CGFloat) {
+        self.value = newValue
+        
+        UIView.animate(withDuration: _animationInterval) {
+            self.ratingValueChange()
+        }
+    }
 }

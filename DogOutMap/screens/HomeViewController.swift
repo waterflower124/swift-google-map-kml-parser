@@ -32,13 +32,29 @@ class HomeViewController: UIViewController, MKMapViewDelegate ,CLLocationManager
     
     @IBOutlet weak var googleMapView: MKMapView!
     
+    @IBOutlet weak var detailBox: UIView!
+    @IBOutlet weak var detailBoxLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var mainImageView: UIImageView!
+    @IBOutlet weak var mainName_label: UILabel!
+    @IBOutlet weak var name_label: UILabel!
+    @IBOutlet weak var description_label: UILabel!
+    @IBOutlet weak var address_label: UILabel!
+    @IBOutlet weak var phone_label: UILabel!
+    @IBOutlet weak var rating_label: UILabel!
+    @IBOutlet weak var ratingBar: AARatingBar!
+    @IBOutlet weak var slidshow: ImageSlideshow!
+    @IBOutlet weak var website_label: UILabel!
+    @IBOutlet weak var photocountLabel: UILabel!
+    @IBOutlet weak var photogoogledescLabel: UILabel!
+    
+    
     
     //////  variable for google map    ////////
-    let map_key = "AIzaSyDRZH0CebAvVYviNiZUCBNqi1OqR3eicMs";
-    var clLocationManager = CLLocationManager();
-    var currentLocation = CLLocation();
-    var destinationLocation = CLLocation();
-    var first_running = true;//use for display annotation,  if update current location it's value is false
+    let map_key = "AIzaSyAUfciCLFycnIUlrUUwjApQyhRyNr01o7g"
+    var clLocationManager = CLLocationManager()
+    var currentLocation = CLLocation()
+    var destinationLocation = CLLocation()
+    var first_running = true//use for display annotation,  if update current location it's value is false
     
     ///////   for activityt indicator  //////////
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView();
@@ -47,52 +63,65 @@ class HomeViewController: UIViewController, MKMapViewDelegate ,CLLocationManager
     ////////   varibles for KML file read   ////////////////////
     
     
-    var thisElementName = "";
+    var thisElementName = ""
     
-    let DOCUMENT_TAG = "Document";
-    let FOLDER_TAG = "Folder";
-    let FOLDERNAME_TAG = "name";
-    let PLACEMARK_TAG = "Placemark";
-    let PLACEMARKNAME_TAG = "name";
-    let DESCRIPTION_TAG = "description";
-    let POINT_TAG = "Point";
-    let COORDINATE_TAG = "coordinates";
+    let DOCUMENT_TAG = "Document"
+    let FOLDER_TAG = "Folder"
+    let FOLDERNAME_TAG = "name"
+    let PLACEMARK_TAG = "Placemark"
+    let PLACEMARKNAME_TAG = "name"
+    let DESCRIPTION_TAG = "description"
+    let POINT_TAG = "Point"
+    let COORDINATE_TAG = "coordinates"
     
-    var isDocument = false;
-    var isFolder = false;
-    var isFolderStart = false;
-    var isFolderName = false;
-    var isPlacemark = false;
-    var isPlacemarkName = false;
-    var isDescription = false;
-    var isPoint = false;
-    var isCoordinate = false;
+    var isDocument = false
+    var isFolder = false
+    var isFolderStart = false
+    var isFolderName = false
+    var isPlacemark = false
+    var isPlacemarkName = false
+    var isDescription = false
+    var isPoint = false
+    var isCoordinate = false
     
-    var folderName = "";
-    var placemarkerName = "";
-    var descriptionStr = "";
-    var latitude_kml = "";
-    var longitude_kml = "";
+    var folderName = ""
+    var placemarkerName = ""
+    var descriptionStr = ""
+    var latitude_kml = ""
+    var longitude_kml = ""
     
-    var mapInfosArray: [mapInfo] = Array();
+    var mapInfosArray: [mapInfo] = Array()
     //    var folderInfo: [[String]] = Array();
-    var placeInfo: [Dictionary<String, String>] = Array();
-    var eachItem = Dictionary<String, String>();
+    var placeInfo: [Dictionary<String, String>] = Array()
+    var eachItem = Dictionary<String, String>()
     
-    var mapInforClass = mapInfo();
+    var mapInforClass = mapInfo()
     
-    var place_name = "";
-    var address = "";
-    var phone_nember = "";
-    var website = "";
-    var rating = 0.0;
-    var photo_array = [String]();
-    
+    var place_name = ""
+    var address = ""
+    var phone_nember = ""
+    var website = ""
+    var rating = 0.0
+    var photo_array = [String]()
+    var sdWebImageSource = [SDWebImageSource]()
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ratingBar.isEnabled = false;
+        ratingBar.isAbsValue = false;
+        ratingBar.canAnimate = false
+        ratingBar.color = UIColor.red;
+        ratingBar.maxValue = 5
+        ratingBar.value = 0.0;
+        
+        ////////   slide    ///////////////////
+        slidshow.slideshowInterval = 2.0;
+        slidshow.pageIndicatorPosition = .init(horizontal: .center, vertical: .under);
+        slidshow.contentScaleMode = UIView.ContentMode.scaleAspectFill;
+        slidshow.pageIndicator = nil
 
         clLocationManager.delegate = self
         clLocationManager.desiredAccuracy = kCLLocationAccuracyBest;
@@ -106,18 +135,32 @@ class HomeViewController: UIViewController, MKMapViewDelegate ,CLLocationManager
         googleMapView.setRegion(region, animated: true)
         self.googleMapView.showsUserLocation = true
         
+        ////  dismiss keyboard   ///////
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         view.addGestureRecognizer(tap)
+        
+        ////  wesite lable tap add   ///////
+        let tapWebsiteLabel: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.websitLabel_Tapped))
+        self.website_label.addGestureRecognizer(tapWebsiteLabel)
     }
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
     
+    @objc func websitLabel_Tapped() {
+        let url_str = self.website_label.text!
+        if UIApplication.shared.canOpenURL(URL(string: url_str)!) {
+            UIApplication.shared.open(URL(string: url_str)!, options: [:], completionHandler: nil);
+        } else {
+            createAlert(title: "Warning", message: "Cannot open Website");
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        animateSideDetailBox(action: "disappear", animated: false)
+        animateSideDetailBox(action: "disappear", animated: false)
         startActivityIndicator()
         DispatchQueue.global(qos: .userInteractive).async {
             /////     KML File read   /////////
@@ -130,6 +173,10 @@ class HomeViewController: UIViewController, MKMapViewDelegate ,CLLocationManager
                 print("parser Error");
             }
         }
+    }
+    
+    @IBAction func disappearButtonAction(_ sender: Any) {
+        animateSideDetailBox(action: "disappear", animated: true)
     }
     
     @IBAction func categoryButtonAction(_ sender: Any) {
@@ -292,6 +339,202 @@ class HomeViewController: UIViewController, MKMapViewDelegate ,CLLocationManager
         return annotationView
     }
     
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+//        animateSideDetailBox(action: "show", animated: true)
+        
+        sdWebImageSource.removeAll();
+        guard let annotation = view.annotation as? customAnnotation else {
+            return
+        }
+        destinationLocation = CLLocation(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
+        
+        var place_id = annotation.place_id
+        description_label.text = annotation.place_description
+        let place_name_kml = annotation.title
+        
+        var findGoogleAPI = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?";
+        findGoogleAPI += "input=" + place_name_kml!;
+        findGoogleAPI += "&inputtype=textquery";
+        findGoogleAPI += "&locationbias=circle:2000@" + String(describing: annotation.coordinate.latitude) + "," + String(describing: annotation.coordinate.longitude);
+        findGoogleAPI += "&key=" + map_key;
+        
+        findGoogleAPI = findGoogleAPI.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!;
+        var url_placeID = URLRequest(url: URL(string: findGoogleAPI)!);
+        url_placeID.httpMethod = "GET";
+        
+//        print("find API:   \(findGoogleAPI)");
+        startActivityIndicator();
+        
+        let task_placeID = URLSession.shared.dataTask(with: url_placeID) {
+            (data, response, error) in
+            if(error == nil) {
+                let jsonData = try? JSONSerialization.jsonObject(with: data!, options: .mutableContainers);
+                if let data = jsonData as? Dictionary<String, AnyObject> {
+                    if let result_status = data["status"] as? String {
+                        if result_status == "ZERO_RESULTS" {
+                            place_id = "";
+                            print("get place id error")
+                            print(data)
+                        } else if result_status == "OK" {
+                            if let candidates = data["candidates"] as? [Dictionary<String, AnyObject>] {
+                                place_id = candidates[0]["place_id"] as? String
+                                print("11111")
+                                self.getPlaceDetails(of: place_id!)
+                                return
+                            }
+                        }
+                    }
+                }
+            } else {
+                print("Communication Error")
+            }
+            DispatchQueue.main.async {
+                if self.activityIndicator.isAnimating {
+                    self.stopActivityIndicator()
+                }
+            }
+            //group_findPlaceID.leave();
+        }
+        task_placeID.resume();
+        let group_placeDetail = DispatchGroup();
+        group_placeDetail.enter();
+    }
+    
+    func getPlaceDetails(of place_id: String) {
+        place_name = ""
+        address = ""
+        phone_nember = ""
+        website = ""
+        rating = 0.0
+        photo_array = [String]()
+        
+        var strGoogleAPI = "https://maps.googleapis.com/maps/api/place/details/json?";
+        strGoogleAPI += "placeid=" + place_id;
+        strGoogleAPI += "&key=" + map_key;
+        strGoogleAPI = strGoogleAPI.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!;
+        var urlRequest = URLRequest(url: URL(string: strGoogleAPI)!);
+        urlRequest.httpMethod = "GET";
+        
+//        print("detail API:   \(strGoogleAPI)");
+        let task_placeDetail = URLSession.shared.dataTask(with: urlRequest) {
+            (data, response, error) in
+            if(error == nil) {
+                let jsonData = try? JSONSerialization.jsonObject(with: data!, options: .mutableContainers);
+                if let data = jsonData as? Dictionary<String, AnyObject> {
+                    if let result = data["result"] as? [String: Any] {
+                        print("2222")
+                        if(result["name"] == nil) {
+                            self.place_name = "No place name"
+                        } else {
+                            self.place_name = result["name"] as! String
+                        }
+                        if(result["formatted_address"] == nil) {
+                            self.address = "No address"
+                        } else {
+                            self.address = result["formatted_address"] as! String
+                        }
+                        if(result["formatted_phone_number"] == nil) {
+                            self.phone_nember = "No phone number"
+                        } else {
+                            self.phone_nember = result["formatted_phone_number"] as! String
+                        }
+                        if(result["website"] == nil) {
+                            self.website = "No website"
+                        } else {
+                            self.website = result["website"] as! String
+                        }
+                        if(result["rating"] == nil) {
+                            self.rating = 0.0
+                        } else {
+                            self.rating = result["rating"] as! Double;
+                        }
+                        if(result["photos"] != nil) {
+                            if let photos = result["photos"] as? [Dictionary<String, AnyObject>] {
+                                var url_string = ""
+                                for photo in photos {
+                                    url_string = ""
+                                    url_string = "https://maps.googleapis.com/maps/api/place/photo?maxwidth="
+                                    url_string += String(photo["width"] as! Int)
+                                    url_string += "&photoreference="
+                                    url_string += photo["photo_reference"] as! String
+                                    url_string = url_string + "&key=" + self.map_key
+                                    
+                                    self.photo_array.append(url_string)
+                                }
+                            }
+                        }
+                        DispatchQueue.main.async {
+                            self.updateUI()
+                        }
+                        
+                        return
+                    }
+                }
+            } else {
+                print("errrrrrrrrrrr");
+            }
+            DispatchQueue.main.async {
+                if self.activityIndicator.isAnimating {
+                    self.stopActivityIndicator();
+                }
+            }
+            //            group_placeDetail.leave();
+        }
+        task_placeDetail.resume();
+    }
+    
+    func updateUI() {
+        if photo_array.count > 0 {
+            do {
+                let first_url_image = URL(string: photo_array[0]);
+                let data = try Data(contentsOf: first_url_image!);
+                DispatchQueue.main.async {
+                    self.mainImageView.clipsToBounds = true
+                    self.mainImageView.contentMode = UIView.ContentMode.scaleAspectFill
+                    self.mainImageView.sd_setImage(with: first_url_image, completed: nil)
+                }
+            } catch {
+                print("this is in the response \( error)")
+            }
+        } else {
+            self.mainImageView.clipsToBounds = true
+            self.mainImageView.contentMode = UIView.ContentMode.scaleAspectFit
+            self.mainImageView.image = UIImage(named: "logo")
+        }
+        
+        mainName_label.text = place_name
+        name_label.text = place_name
+        
+        address_label.text = address
+        phone_label.text = phone_nember
+        website_label.text = website
+//        website_button.setTitle(website, for: UIControlState.normal);
+        rating_label.text = String(format:"%.1f", rating)
+        self.ratingBar.updateValue(with: CGFloat(rating))
+        
+        
+        if photo_array.count > 0 {
+            for i in 0..<photo_array.count {
+                sdWebImageSource.append(SDWebImageSource(urlString: photo_array[i])!)
+            }
+            slidshow.setImageInputs(sdWebImageSource)
+            photocountLabel.text = String(photo_array.count)
+            slidshow.contentScaleMode = UIView.ContentMode.scaleAspectFill
+        } else {
+            let empty_imageArray = [ImageSource(imageString: "logo")]
+            slidshow.setImageInputs(empty_imageArray as! [InputSource])
+            slidshow.contentScaleMode = UIView.ContentMode.scaleAspectFit
+            photocountLabel.text = "0"
+        }
+        
+        DispatchQueue.main.async {
+            if self.activityIndicator.isAnimating {
+                self.stopActivityIndicator()
+            }
+            self.animateSideDetailBox(action: "show", animated: true)
+        }
+    }
+    
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
         DispatchQueue.main.async {
             if self.activityIndicator.isAnimating {
@@ -406,6 +649,26 @@ class HomeViewController: UIViewController, MKMapViewDelegate ,CLLocationManager
         }
         if(elementName == COORDINATE_TAG) {
             isCoordinate = false;
+        }
+    }
+    
+    func animateSideDetailBox(action: String, animated isAnimated: Bool) {
+        var xPosition = 0;
+        if action != "show" {
+            xPosition = -250
+        }
+        
+        if isAnimated{
+            UIView.animate(withDuration: 0.5, animations: {
+                self.detailBoxLeadingConstraint.constant = CGFloat(xPosition)
+                self.view.layoutIfNeeded()
+            }) { (success) in
+//                self.ratingBar.value = 1.2;
+            }
+        }else {
+            self.detailBoxLeadingConstraint.constant = CGFloat(xPosition)
+            self.view.layoutIfNeeded()
+//            ratingBar.value = 1.2;
         }
     }
     
