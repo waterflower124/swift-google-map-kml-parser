@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aLd-uX-xBe">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,6 +10,62 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Splash View Controller-->
+        <scene sceneID="3VX-V1-gti">
+            <objects>
+                <viewController id="aLd-uX-xBe" customClass="SplashViewController" customModule="DogOutMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rzu-Ph-etA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="fYI-r3-dti">
+                                <rect key="frame" x="65" y="170" width="245" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="245" id="355-VP-NOX"/>
+                                    <constraint firstAttribute="height" constant="75" id="TDv-oX-af1"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Dogout -- Dog Friendly Map" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vgO-dQ-tGW">
+                                <rect key="frame" x="12.5" y="280" width="350" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="350" id="Avb-8X-1dU"/>
+                                    <constraint firstAttribute="height" constant="25" id="ndg-2V-OWQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The dog-friendly map" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FPn-RJ-6cJ">
+                                <rect key="frame" x="82.5" y="542" width="210" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="210" id="Qnr-6G-Ndt"/>
+                                    <constraint firstAttribute="height" constant="25" id="lOe-sH-jnX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.98431372549019602" blue="0.41568627450980389" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="n2p-Rg-N4A" firstAttribute="bottom" secondItem="FPn-RJ-6cJ" secondAttribute="bottom" constant="100" id="6dW-zH-3T7"/>
+                            <constraint firstItem="fYI-r3-dti" firstAttribute="centerX" secondItem="n2p-Rg-N4A" secondAttribute="centerX" id="Cxs-zw-WpX"/>
+                            <constraint firstItem="vgO-dQ-tGW" firstAttribute="centerX" secondItem="n2p-Rg-N4A" secondAttribute="centerX" id="PUp-w3-13C"/>
+                            <constraint firstItem="fYI-r3-dti" firstAttribute="top" secondItem="n2p-Rg-N4A" secondAttribute="top" constant="150" id="Qhm-Mi-Pq2"/>
+                            <constraint firstItem="vgO-dQ-tGW" firstAttribute="top" secondItem="fYI-r3-dti" secondAttribute="bottom" constant="35" id="cnX-sE-nnr"/>
+                            <constraint firstItem="FPn-RJ-6cJ" firstAttribute="centerX" secondItem="n2p-Rg-N4A" secondAttribute="centerX" id="iS1-eT-jjn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="n2p-Rg-N4A"/>
+                    </view>
+                    <connections>
+                        <segue destination="znS-kW-7a4" kind="presentation" identifier="splashtosignin_segue" id="guM-qn-aMx"/>
+                        <segue destination="z73-Mc-P8m" kind="presentation" identifier="splashtohome_segue" id="hUm-fH-hos"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aLk-pg-eAq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="301.60000000000002" y="-1154.5727136431785"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -944,20 +1000,38 @@
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                         <state key="normal" image="current.png"/>
+                                        <connections>
+                                            <action selector="moveCurrentLocationButtonAction:" destination="z73-Mc-P8m" eventType="touchUpInside" id="YOB-sP-HLB"/>
+                                        </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="SXx-bU-zUA">
-                                        <rect key="frame" x="0.0" y="0.0" width="315" height="60"/>
+                                        <rect key="frame" x="60" y="0.0" width="255" height="60"/>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b1j-aR-z96">
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="JQt-et-NOs"/>
+                                            <constraint firstAttribute="width" constant="60" id="KyJ-Ie-4qY"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="15" minY="15" maxX="15" maxY="15"/>
+                                        <state key="normal" image="icon_signout.png"/>
+                                        <connections>
+                                            <action selector="signoutButtonAction:" destination="z73-Mc-P8m" eventType="touchUpInside" id="57Q-QB-7NT"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.98431372549019602" blue="0.41568627450980389" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="80H-7Z-Yhl"/>
-                                    <constraint firstItem="L2J-bv-qK0" firstAttribute="leading" secondItem="SXx-bU-zUA" secondAttribute="trailing" id="Dnf-8G-kM7"/>
                                     <constraint firstAttribute="trailing" secondItem="L2J-bv-qK0" secondAttribute="trailing" id="OxZ-nZ-eXd"/>
-                                    <constraint firstAttribute="bottom" secondItem="SXx-bU-zUA" secondAttribute="bottom" id="iZV-mO-I2x"/>
-                                    <constraint firstItem="SXx-bU-zUA" firstAttribute="leading" secondItem="J8x-HG-5YN" secondAttribute="leading" id="lBm-M0-dd7"/>
+                                    <constraint firstItem="SXx-bU-zUA" firstAttribute="leading" secondItem="b1j-aR-z96" secondAttribute="trailing" id="TL6-iA-bGm"/>
+                                    <constraint firstAttribute="bottom" secondItem="SXx-bU-zUA" secondAttribute="bottom" id="VHq-oA-Uls"/>
+                                    <constraint firstItem="b1j-aR-z96" firstAttribute="top" secondItem="J8x-HG-5YN" secondAttribute="top" id="d4m-lH-M3a"/>
+                                    <constraint firstItem="L2J-bv-qK0" firstAttribute="leading" secondItem="SXx-bU-zUA" secondAttribute="trailing" id="ifv-aW-fcj"/>
                                     <constraint firstAttribute="bottom" secondItem="L2J-bv-qK0" secondAttribute="bottom" id="lbC-wm-eNJ"/>
-                                    <constraint firstItem="SXx-bU-zUA" firstAttribute="top" secondItem="J8x-HG-5YN" secondAttribute="top" id="qBs-0d-i8z"/>
+                                    <constraint firstItem="SXx-bU-zUA" firstAttribute="top" secondItem="J8x-HG-5YN" secondAttribute="top" id="lmh-ec-stQ"/>
+                                    <constraint firstItem="b1j-aR-z96" firstAttribute="leading" secondItem="J8x-HG-5YN" secondAttribute="leading" id="zXf-8M-YKK"/>
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MEx-rD-xZR">
@@ -1233,6 +1307,10 @@
                                     <constraint firstItem="cbr-0q-rFQ" firstAttribute="centerY" secondItem="UOz-Ib-9ve" secondAttribute="centerY" id="wR0-0U-iLi"/>
                                 </constraints>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AOQ-d3-ahR">
+                                <rect key="frame" x="0.0" y="80" width="375" height="860"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bak-Pb-EK2">
                                 <rect key="frame" x="0.0" y="80" width="250" height="860"/>
                                 <subviews>
@@ -1274,7 +1352,7 @@
                                                                     <action selector="directionButtonAction:" destination="z73-Mc-P8m" eventType="touchUpInside" id="bat-dY-ldb"/>
                                                                 </connections>
                                                             </button>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Grange Pub" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PCM-O4-6RX">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Grange Pub" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PCM-O4-6RX" customClass="MarqueeLabel" customModule="MarqueeLabel">
                                                                 <rect key="frame" x="40" y="10" width="165" height="30"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="30" id="Wrb-P7-ddp"/>
@@ -1309,7 +1387,7 @@
                                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Grange Hub" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOe-pk-2vw">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Grange Hub" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOe-pk-2vw" customClass="MarqueeLabel" customModule="MarqueeLabel">
                                                                 <rect key="frame" x="15" y="20" width="225" height="15"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="15" id="FZ3-pP-aQf"/>
@@ -1492,7 +1570,7 @@
                                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="103 - 104 Grange Rd, London Street" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5U3-wG-oV4">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="103 - 104 Grange Rd, London Street" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5U3-wG-oV4" customClass="MarqueeLabel" customModule="MarqueeLabel">
                                                                 <rect key="frame" x="15" y="25" width="225" height="15"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="15" id="oZc-UV-RuH"/>
@@ -1510,7 +1588,7 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="http://grangepub.co.uk/" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JvA-VT-giz">
+                                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="http://grangepub.co.uk/" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JvA-VT-giz" customClass="MarqueeLabel" customModule="MarqueeLabel">
                                                                 <rect key="frame" x="15" y="75" width="225" height="18"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="18" id="qum-uf-nTc"/>
@@ -1676,17 +1754,17 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sfj-px-7Bi">
                                         <rect key="frame" x="0.0" y="0.0" width="340" height="70"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Grange Pub" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jCV-EM-BrO">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Grange Pub" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jCV-EM-BrO" customClass="MarqueeLabel" customModule="MarqueeLabel">
                                                 <rect key="frame" x="15" y="13" width="240" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="240" id="VyW-hm-SaG"/>
                                                     <constraint firstAttribute="height" constant="25" id="z2s-3c-RQi"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="18"/>
+                                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="103 - 104 Grange Rd, London" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BRz-hg-Qup">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="103 - 104 Grange Rd, London" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BRz-hg-Qup" customClass="MarqueeLabel" customModule="MarqueeLabel">
                                                 <rect key="frame" x="15" y="45" width="310" height="15"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="15" id="YkO-Lt-3nl"/>
@@ -1786,7 +1864,7 @@
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Tu7-eU-LHx">
-                                        <rect key="frame" x="0.0" y="141" width="340" height="459"/>
+                                        <rect key="frame" x="0.0" y="142" width="340" height="458"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="reporttableviewcell" rowHeight="90" id="AT2-OZ-FPR" customClass="ReportsTableViewCell" customModule="DogOutMap" customModuleProvider="target">
@@ -1872,10 +1950,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="Cnz-zj-7sa" firstAttribute="leading" secondItem="cdL-mN-MJP" secondAttribute="leading" id="3S1-B7-JTs"/>
-                                    <constraint firstItem="Tu7-eU-LHx" firstAttribute="leading" secondItem="cdL-mN-MJP" secondAttribute="leading" id="6l1-ep-Alo"/>
                                     <constraint firstAttribute="height" constant="600" id="9D5-o7-ica"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="600" id="9km-jW-hA9"/>
                                     <constraint firstAttribute="trailing" secondItem="GZd-WR-ZIF" secondAttribute="trailing" id="AfP-R6-CWx"/>
+                                    <constraint firstAttribute="bottom" secondItem="Tu7-eU-LHx" secondAttribute="bottom" id="C5s-Nj-iQj"/>
                                     <constraint firstItem="sfj-px-7Bi" firstAttribute="leading" secondItem="cdL-mN-MJP" secondAttribute="leading" id="DW9-36-u6y"/>
                                     <constraint firstItem="DbF-tM-vV3" firstAttribute="leading" secondItem="cdL-mN-MJP" secondAttribute="leading" id="ERK-Zq-iXB"/>
                                     <constraint firstAttribute="width" constant="340" id="EqP-92-K7P"/>
@@ -1886,21 +1964,22 @@
                                     <constraint firstItem="DbF-tM-vV3" firstAttribute="top" secondItem="9XF-nt-d9w" secondAttribute="bottom" constant="10" id="Ors-MH-rpT"/>
                                     <constraint firstItem="DbF-tM-vV3" firstAttribute="top" secondItem="GZd-WR-ZIF" secondAttribute="bottom" id="PJI-oP-a4D"/>
                                     <constraint firstItem="JAo-iL-h7k" firstAttribute="leading" secondItem="cdL-mN-MJP" secondAttribute="leading" constant="15" id="PqI-xq-OEe"/>
-                                    <constraint firstAttribute="bottom" secondItem="Tu7-eU-LHx" secondAttribute="bottom" id="S2I-XW-odZ"/>
+                                    <constraint firstItem="Tu7-eU-LHx" firstAttribute="leading" secondItem="cdL-mN-MJP" secondAttribute="leading" id="VED-0P-hmI"/>
+                                    <constraint firstItem="Tu7-eU-LHx" firstAttribute="top" secondItem="DbF-tM-vV3" secondAttribute="bottom" id="VS4-CV-Ixf"/>
                                     <constraint firstItem="GZd-WR-ZIF" firstAttribute="leading" secondItem="cdL-mN-MJP" secondAttribute="leading" id="WcU-GB-Yxk"/>
                                     <constraint firstAttribute="trailing" secondItem="9XF-nt-d9w" secondAttribute="trailing" constant="15" id="Wn1-Tf-x8B"/>
                                     <constraint firstItem="GZd-WR-ZIF" firstAttribute="top" secondItem="Cnz-zj-7sa" secondAttribute="bottom" id="Z37-1c-B3b"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="340" id="ZAw-Qz-w3T"/>
                                     <constraint firstItem="Cnz-zj-7sa" firstAttribute="top" secondItem="sfj-px-7Bi" secondAttribute="bottom" id="eB2-AM-ldp"/>
                                     <constraint firstItem="sfj-px-7Bi" firstAttribute="top" secondItem="cdL-mN-MJP" secondAttribute="top" id="i8M-vg-HZA"/>
-                                    <constraint firstAttribute="trailing" secondItem="Tu7-eU-LHx" secondAttribute="trailing" id="jqh-j9-szt"/>
-                                    <constraint firstItem="Tu7-eU-LHx" firstAttribute="top" secondItem="GZd-WR-ZIF" secondAttribute="bottom" id="pT8-1N-RjV"/>
+                                    <constraint firstAttribute="trailing" secondItem="Tu7-eU-LHx" secondAttribute="trailing" id="sRV-7y-dq8"/>
                                     <constraint firstAttribute="trailing" secondItem="Cnz-zj-7sa" secondAttribute="trailing" id="wSA-2I-nm6"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="AOQ-d3-ahR" firstAttribute="leading" secondItem="GhQ-gb-ZR1" secondAttribute="leading" id="1R5-IU-efg"/>
                             <constraint firstItem="AAk-Ui-Ik1" firstAttribute="top" secondItem="GhQ-gb-ZR1" secondAttribute="top" id="1ko-nV-usg"/>
                             <constraint firstItem="bak-Pb-EK2" firstAttribute="top" secondItem="AAk-Ui-Ik1" secondAttribute="bottom" id="2va-yc-CO4"/>
                             <constraint firstItem="od9-2j-D5q" firstAttribute="leading" secondItem="GhQ-gb-ZR1" secondAttribute="leading" id="4lb-rQ-c8B"/>
@@ -1910,14 +1989,17 @@
                             <constraint firstItem="AAk-Ui-Ik1" firstAttribute="trailing" secondItem="GhQ-gb-ZR1" secondAttribute="trailing" id="AdE-II-Eob"/>
                             <constraint firstItem="od9-2j-D5q" firstAttribute="top" secondItem="GhQ-gb-ZR1" secondAttribute="top" id="F6E-XG-vkq"/>
                             <constraint firstItem="AAk-Ui-Ik1" firstAttribute="leading" secondItem="GhQ-gb-ZR1" secondAttribute="leading" id="GdG-OQ-AUv"/>
+                            <constraint firstItem="AOQ-d3-ahR" firstAttribute="trailing" secondItem="GhQ-gb-ZR1" secondAttribute="trailing" id="I9h-R9-TmA"/>
                             <constraint firstItem="nt6-Zn-hPO" firstAttribute="trailing" secondItem="GhQ-gb-ZR1" secondAttribute="trailing" id="IIL-dz-QA2"/>
                             <constraint firstItem="J8x-HG-5YN" firstAttribute="top" secondItem="bak-Pb-EK2" secondAttribute="bottom" id="IQz-c7-G5Y"/>
+                            <constraint firstItem="AOQ-d3-ahR" firstAttribute="top" secondItem="AAk-Ui-Ik1" secondAttribute="bottom" id="NEH-Er-IUr"/>
                             <constraint firstItem="od9-2j-D5q" firstAttribute="trailing" secondItem="GhQ-gb-ZR1" secondAttribute="trailing" id="NIY-qY-s0N"/>
                             <constraint firstItem="J8x-HG-5YN" firstAttribute="trailing" secondItem="GhQ-gb-ZR1" secondAttribute="trailing" id="Pga-Vc-lNV"/>
                             <constraint firstItem="bak-Pb-EK2" firstAttribute="leading" secondItem="GhQ-gb-ZR1" secondAttribute="leading" id="Um7-IU-ac4"/>
                             <constraint firstItem="J8x-HG-5YN" firstAttribute="leading" secondItem="GhQ-gb-ZR1" secondAttribute="leading" id="WNc-cx-xtz"/>
                             <constraint firstItem="MEx-rD-xZR" firstAttribute="leading" secondItem="GhQ-gb-ZR1" secondAttribute="leading" constant="60" id="WZn-Yw-HN5"/>
                             <constraint firstAttribute="trailing" secondItem="UOz-Ib-9ve" secondAttribute="trailing" id="a0D-8j-ilm"/>
+                            <constraint firstAttribute="bottom" secondItem="AOQ-d3-ahR" secondAttribute="bottom" constant="60" id="bSZ-MO-aT6"/>
                             <constraint firstItem="J8x-HG-5YN" firstAttribute="top" secondItem="nt6-Zn-hPO" secondAttribute="bottom" id="eIa-D2-yR4"/>
                             <constraint firstItem="od9-2j-D5q" firstAttribute="bottom" secondItem="GhQ-gb-ZR1" secondAttribute="bottom" id="eVx-ln-zf6"/>
                             <constraint firstItem="J8x-HG-5YN" firstAttribute="bottom" secondItem="GhQ-gb-ZR1" secondAttribute="bottom" id="gOM-Gj-CrI"/>
@@ -1932,7 +2014,7 @@
                     <size key="freeformSize" width="375" height="1000"/>
                     <connections>
                         <outlet property="activityButton" destination="NgM-ai-5jt" id="N1e-V6-9MC"/>
-                        <outlet property="address_label" destination="5U3-wG-oV4" id="Pa4-9m-v46"/>
+                        <outlet property="address_label" destination="5U3-wG-oV4" id="iDs-Y9-QRe"/>
                         <outlet property="beachButton" destination="Yk3-V2-hyH" id="4w7-Ub-EY1"/>
                         <outlet property="callButton" destination="hUk-Bh-cYb" id="tXb-EP-kbY"/>
                         <outlet property="categoryButton" destination="guC-b4-cpd" id="hRf-za-Pc3"/>
@@ -1940,6 +2022,7 @@
                         <outlet property="description_label" destination="atJ-JK-k7z" id="mEg-5t-aOt"/>
                         <outlet property="detailBox" destination="bak-Pb-EK2" id="ANd-R0-iPf"/>
                         <outlet property="detailBoxLeadingConstraint" destination="Um7-IU-ac4" id="1tH-ex-STu"/>
+                        <outlet property="detailBoxTransV" destination="AOQ-d3-ahR" id="Jf4-nl-agy"/>
                         <outlet property="dogoutReviewModalTransV" destination="od9-2j-D5q" id="K1q-81-xJy"/>
                         <outlet property="dogoutReviewModalView" destination="cdL-mN-MJP" id="y8B-Ws-HQo"/>
                         <outlet property="dogoutReviewView" destination="Tfs-IP-Vrc" id="cKR-1m-EVl"/>
@@ -1948,13 +2031,13 @@
                         <outlet property="googleMapView" destination="nt6-Zn-hPO" id="nms-zx-2FM"/>
                         <outlet property="hotelButton" destination="1Yc-mh-MYn" id="0wx-w5-cuJ"/>
                         <outlet property="mainImageView" destination="HHZ-up-fJQ" id="jf7-o2-g66"/>
-                        <outlet property="mainName_label" destination="PCM-O4-6RX" id="FSF-Ax-ni8"/>
-                        <outlet property="modalAddressLabel" destination="BRz-hg-Qup" id="VTC-Xr-wLa"/>
+                        <outlet property="mainName_label" destination="PCM-O4-6RX" id="TdJ-5H-dX5"/>
+                        <outlet property="modalAddressLabel" destination="BRz-hg-Qup" id="9Rx-T2-ZQr"/>
                         <outlet property="modalCountReviewsLabel" destination="9XF-nt-d9w" id="D5L-1n-rRe"/>
-                        <outlet property="modalPlaceNameLabel" destination="jCV-EM-BrO" id="guH-By-nXC"/>
+                        <outlet property="modalPlaceNameLabel" destination="jCV-EM-BrO" id="y32-VM-Wa3"/>
                         <outlet property="modalRatingBar" destination="TQe-11-Ajy" id="VQO-xJ-NOu"/>
                         <outlet property="modalReviewLabel" destination="JAo-iL-h7k" id="CSW-fm-MO8"/>
-                        <outlet property="name_label" destination="rOe-pk-2vw" id="EIU-01-T2q"/>
+                        <outlet property="name_label" destination="rOe-pk-2vw" id="fDJ-vL-NDx"/>
                         <outlet property="phone_label" destination="OkS-RT-piy" id="y9l-eM-stX"/>
                         <outlet property="photocountLabel" destination="6MZ-Vb-tWh" id="O8i-4g-6dV"/>
                         <outlet property="photogoogledescLabel" destination="GNt-yJ-rcv" id="Pph-sp-KZc"/>
@@ -1970,12 +2053,13 @@
                         <outlet property="suggestButtonRegionView" destination="UOz-Ib-9ve" id="4Fl-p3-1bh"/>
                         <outlet property="supermarketButton" destination="qYx-8U-bVW" id="bsE-9E-2gt"/>
                         <outlet property="websiteButton" destination="eQ0-Az-DmK" id="FgS-tL-T7h"/>
-                        <outlet property="website_label" destination="JvA-VT-giz" id="fUH-ig-db8"/>
+                        <outlet property="website_label" destination="JvA-VT-giz" id="AhL-h5-Tsy"/>
                         <outlet property="workspaceButton" destination="ukO-v4-n4b" id="Hyb-aC-wcj"/>
                         <segue destination="Ft9-Vm-KTo" kind="presentation" identifier="hometowritingreview_segue" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="Mvs-mU-fIc"/>
                         <segue destination="yeV-W3-YxZ" kind="presentation" identifier="hometoreportlocation_segue" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="JJn-ri-LLH"/>
                         <segue destination="z19-lg-1XC" kind="presentation" identifier="hometosuggestnewlocation_segue" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="1cC-he-mDi"/>
                         <segue destination="vsu-OC-M7U" kind="presentation" identifier="hometodirection_segue" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="SnX-zp-YKq"/>
+                        <segue destination="znS-kW-7a4" kind="presentation" identifier="hometosignin_segue" id="H6n-8H-Ift"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c1g-pP-317" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2337,7 +2421,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lu0-ra-uN2">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="70"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Grange Pub" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Jb-up-OZN">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Grange Pub" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Jb-up-OZN" customClass="MarqueeLabel" customModule="MarqueeLabel">
                                                 <rect key="frame" x="15" y="13" width="243" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="Iez-wE-whb"/>
@@ -2346,7 +2430,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="103 - 104 Grange Rd, London" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DEN-cA-69X">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="103 - 104 Grange Rd, London" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DEN-cA-69X" customClass="MarqueeLabel" customModule="MarqueeLabel">
                                                 <rect key="frame" x="15" y="45" width="313" height="15"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="15" id="dBk-kU-jPY"/>
@@ -2546,11 +2630,11 @@
                         <viewLayoutGuide key="safeArea" id="Gva-bs-yTF"/>
                     </view>
                     <connections>
-                        <outlet property="addressLabel" destination="DEN-cA-69X" id="aTv-mc-9Bz"/>
+                        <outlet property="addressLabel" destination="DEN-cA-69X" id="imX-sB-YUR"/>
                         <outlet property="commentTextView" destination="LDh-KK-ht4" id="mJ9-oc-tTX"/>
                         <outlet property="mailTextField" destination="Ly2-Ln-vjf" id="l7c-Rh-TtL"/>
                         <outlet property="maincommentView" destination="Vgh-s7-Xj4" id="HVf-Hq-9zx"/>
-                        <outlet property="placenameLabel" destination="8Jb-up-OZN" id="xJ5-2y-FDc"/>
+                        <outlet property="placenameLabel" destination="8Jb-up-OZN" id="5SE-fS-Ge0"/>
                         <outlet property="remainCharacterLabel" destination="XoQ-kg-r9N" id="oC8-ic-uZV"/>
                         <outlet property="resultView" destination="nEW-Dd-6Op" id="TZN-n7-jW0"/>
                     </connections>
@@ -2595,16 +2679,16 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0bR-KV-qhf">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="70"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Grange Pub" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tGy-d8-u5H">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Grange Pub" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tGy-d8-u5H" customClass="MarqueeLabel" customModule="MarqueeLabel">
                                                 <rect key="frame" x="15" y="13" width="243" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="gFQ-Gt-0to"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="18"/>
+                                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="103 - 104 Grange Rd, London" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IQw-49-v9P">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="103 - 104 Grange Rd, London" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IQw-49-v9P" customClass="MarqueeLabel" customModule="MarqueeLabel">
                                                 <rect key="frame" x="15" y="45" width="313" height="15"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="15" id="xDT-TI-kZT"/>
@@ -2781,6 +2865,8 @@
                         <outlet property="mainRatingWindowView" destination="y0l-Uo-veb" id="Lht-E5-8O1"/>
                         <outlet property="mainwindowHeightConstraint" destination="OUE-ty-Vs3" id="QfM-jq-QqC"/>
                         <outlet property="mainwindowWidthConstraint" destination="mMF-3w-OI9" id="UhA-Kd-Qty"/>
+                        <outlet property="placeaddressLabel" destination="IQw-49-v9P" id="zcN-aU-1LC"/>
+                        <outlet property="placenameLabel" destination="tGy-d8-u5H" id="lNj-EE-16b"/>
                         <outlet property="ratingBar" destination="yoF-L4-TUr" id="xsj-xt-qW4"/>
                         <outlet property="remainCharacterLabel" destination="EzG-Tb-R6N" id="Qro-WJ-qzl"/>
                         <outlet property="resultView" destination="Fgz-AM-kL4" id="ytg-VF-HH3"/>
@@ -3185,6 +3271,7 @@ This Terms and conditions page was created at termsandconditionstemplate.com gen
         <image name="dog_foot.png" width="85" height="85"/>
         <image name="dogoutreview_close.png" width="143" height="50"/>
         <image name="email.png" width="203" height="203"/>
+        <image name="icon_signout.png" width="48" height="48"/>
         <image name="left-arrow.png" width="444" height="356"/>
         <image name="lock.png" width="203" height="203"/>
         <image name="logo.png" width="400" height="138"/>
@@ -3197,7 +3284,8 @@ This Terms and conditions page was created at termsandconditionstemplate.com gen
         <image name="writing_review_cancel.png" width="140" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="hUm-fH-hos"/>
         <segue reference="KqL-hA-fS2"/>
-        <segue reference="cWO-Eh-WHy"/>
+        <segue reference="H6n-8H-Ift"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import MarqueeLabel
 
 class ReportLocationViewController: UIViewController, UITextViewDelegate {
 
@@ -15,8 +16,8 @@ class ReportLocationViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var commentTextView: UITextView!
     @IBOutlet weak var remainCharacterLabel: UILabel!
     @IBOutlet weak var mailTextField: UITextField!
-    @IBOutlet weak var placenameLabel: UILabel!
-    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var placenameLabel: MarqueeLabel!
+    @IBOutlet weak var addressLabel: MarqueeLabel!
     
     @IBOutlet weak var maincommentView: UIView!
     @IBOutlet weak var resultView: UIView!
@@ -35,6 +36,21 @@ class ReportLocationViewController: UIViewController, UITextViewDelegate {
         self.mailTextField.text = Global.mail_address
         self.placenameLabel.text = self.place_name
         self.addressLabel.text = self.address
+        ////////   marquee label settting  /////////
+        self.placenameLabel.text = self.place_name
+        self.placenameLabel.type = .continuous
+        self.placenameLabel.speed = .rate(50)
+        self.placenameLabel.fadeLength = 0.0
+        self.placenameLabel.trailingBuffer = 50.0
+        self.placenameLabel.labelWillBeginScroll()
+        
+        self.addressLabel.text = address
+        self.addressLabel.type = .continuous
+        self.addressLabel.speed = .rate(50)
+        self.addressLabel.fadeLength = 0.0
+        self.addressLabel.trailingBuffer = 50.0
+        self.addressLabel.labelWillBeginScroll()
+        ////////////////////////////////////////
 
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         

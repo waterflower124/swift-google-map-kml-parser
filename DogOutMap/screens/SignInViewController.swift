@@ -33,31 +33,29 @@ class SignInViewController: UIViewController {
     
     @IBAction func signInActionButton(_ sender: Any) {
         
-//        self.performSegue(withIdentifier: "logintohome_segue", sender: self)
-        
-//        emailText = emailTextField.text!
-//        passwordText = passwordTextField.text!
-//        if(emailText.isEmpty) {
-//            createAlert(title: "Warning!", message: "Please input your email address.", success: false)
-//            return
-//        }
-//        if(!isValidEmail(email_str: emailText)) {
-//            createAlert(title: "Warning!", message: "Please input valid email address.", success: false)
-//            return
-//        }
-//        if(passwordText.isEmpty) {
-//            createAlert(title: "Warning!", message: "Please input your password.", success: false)
-//            return
-//        }
-//        if( passwordText.count < 6 ) {
-//            createAlert(title: "Warning!", message: "Password have to be at least 6 characters.", success: false)
-//            return
-//        }
+        emailText = emailTextField.text!
+        passwordText = passwordTextField.text!
+        if(emailText.isEmpty) {
+            createAlert(title: "Warning!", message: "Please input your email address.", success: false)
+            return
+        }
+        if(!isValidEmail(email_str: emailText)) {
+            createAlert(title: "Warning!", message: "Please input valid email address.", success: false)
+            return
+        }
+        if(passwordText.isEmpty) {
+            createAlert(title: "Warning!", message: "Please input your password.", success: false)
+            return
+        }
+        if( passwordText.count < 6 ) {
+            createAlert(title: "Warning!", message: "Password have to be at least 6 characters.", success: false)
+            return
+        }
 //
         startActivityIndicator()
 
-//        let requestDic = ["email": emailText, "password": passwordText]
-        let requestDic = ["email": "janghaoling@gmail.com", "password": "123456"]
+        let requestDic = ["email": emailText, "password": passwordText]
+//        let requestDic = ["email": "janghaoling@gmail.com", "password": "123456"]
         AF.request("http://u900336547.hostingerapp.com/api/login", method: .post, parameters: requestDic, encoding: JSONEncoding.default, headers: nil).responseJSON
             {
                 response in
@@ -66,14 +64,17 @@ class SignInViewController: UIViewController {
                     print(error)
                     self.stopActivityIndicator()
                 case .success(let responseObject):
+                    print(responseObject)
                     self.stopActivityIndicator()
                     let responseDict = responseObject as! NSDictionary
 
                     let status = responseDict["status"] as! String
                     if(status == "success") {
                         Global.token = responseDict["data"] as! String
-//                        Global.user_fullname = responseDict["user_name"] as! String
+                        Global.user_fullname = responseDict["data1"] as! String
                         Global.mail_address = self.emailText
+                        UserDefaults.standard.set(self.emailText, forKey: "email")
+                        UserDefaults.standard.set(self.passwordText, forKey: "password")
                         self.performSegue(withIdentifier: "logintohome_segue", sender: self)
                     } else {
                         let error_type = responseDict["error_type"] as! String

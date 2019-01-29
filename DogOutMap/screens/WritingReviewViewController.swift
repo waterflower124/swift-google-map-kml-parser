@@ -9,6 +9,7 @@
 import UIKit
 import AARatingBar
 import Alamofire
+import MarqueeLabel
 
 class WritingReviewViewController: UIViewController, UITextViewDelegate {
 
@@ -17,6 +18,8 @@ class WritingReviewViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var mainwindowHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var mainwindowWidthConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var placenameLabel: MarqueeLabel!
+    @IBOutlet weak var placeaddressLabel: MarqueeLabel!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var ratingBar: AARatingBar!
     @IBOutlet weak var commentTextView: UITextView!
@@ -41,6 +44,22 @@ class WritingReviewViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ////////   marquee label settting  /////////
+        self.placenameLabel.text = self.place_name
+        self.placenameLabel.type = .continuous
+        self.placenameLabel.speed = .rate(50)
+        self.placenameLabel.fadeLength = 0.0
+        self.placenameLabel.trailingBuffer = 50.0
+        self.placenameLabel.labelWillBeginScroll()
+        
+        self.placeaddressLabel.text = address
+        self.placeaddressLabel.type = .continuous
+        self.placeaddressLabel.speed = .rate(50)
+        self.placeaddressLabel.fadeLength = 0.0
+        self.placeaddressLabel.trailingBuffer = 50.0
+        self.placeaddressLabel.labelWillBeginScroll()
+        ////////////////////////////////////////
         
         self.mainRatingWindowView.isHidden = false
         self.resultView.isHidden = true

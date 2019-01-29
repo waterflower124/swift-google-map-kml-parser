@@ -13,6 +13,7 @@ import ImageSlideshow
 import SDWebImage
 import AARatingBar
 import Alamofire
+import MarqueeLabel
 
 
 class HomeViewController: UIViewController, MKMapViewDelegate ,CLLocationManagerDelegate, XMLParserDelegate, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
@@ -38,29 +39,30 @@ class HomeViewController: UIViewController, MKMapViewDelegate ,CLLocationManager
     @IBOutlet weak var detailBox: UIView!
     @IBOutlet weak var detailBoxLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var mainImageView: UIImageView!
-    @IBOutlet weak var mainName_label: UILabel!
-    @IBOutlet weak var name_label: UILabel!
+    @IBOutlet weak var mainName_label: MarqueeLabel!
+    @IBOutlet weak var name_label: MarqueeLabel!
     @IBOutlet weak var description_label: UILabel!
     @IBOutlet weak var callButton: UIButton!
     @IBOutlet weak var websiteButton: UIButton!
     @IBOutlet weak var douout_ratingBar: AARatingBar!
-    @IBOutlet weak var address_label: UILabel!
+    @IBOutlet weak var address_label: MarqueeLabel!
     @IBOutlet weak var phone_label: UILabel!
     @IBOutlet weak var rating_label: UILabel!
     @IBOutlet weak var ratingBar: AARatingBar!
     @IBOutlet weak var slidshow: ImageSlideshow!
-    @IBOutlet weak var website_label: UILabel!
+    @IBOutlet weak var website_label: MarqueeLabel!
     @IBOutlet weak var photocountLabel: UILabel!
     @IBOutlet weak var photogoogledescLabel: UILabel!
     @IBOutlet weak var dogoutReviewView: UIView!
     
+    @IBOutlet weak var detailBoxTransV: UIView!
     @IBOutlet weak var reportlocationView: UIView!
     
     ///////  variables for show reviews modal   //////
     @IBOutlet weak var dogoutReviewModalTransV: UIView!
     @IBOutlet weak var dogoutReviewModalView: UIView!
-    @IBOutlet weak var modalPlaceNameLabel: UILabel!
-    @IBOutlet weak var modalAddressLabel: UILabel!
+    @IBOutlet weak var modalPlaceNameLabel: MarqueeLabel!
+    @IBOutlet weak var modalAddressLabel: MarqueeLabel!
     @IBOutlet weak var modalReviewLabel: UILabel!
     @IBOutlet weak var modalRatingBar: AARatingBar!
     @IBOutlet weak var modalCountReviewsLabel: UILabel!
@@ -137,39 +139,77 @@ class HomeViewController: UIViewController, MKMapViewDelegate ,CLLocationManager
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        ////////   marquee label settting  /////////
+        self.mainName_label.type = .continuous
+        self.mainName_label.speed = .rate(50)
+        self.mainName_label.fadeLength = 0.0
+        self.mainName_label.trailingBuffer = 50.0
+        self.mainName_label.labelWillBeginScroll()
+        
+        self.name_label.type = .continuous
+        self.name_label.speed = .rate(50)
+        self.name_label.fadeLength = 0.0
+        self.name_label.trailingBuffer = 50.0
+        self.name_label.labelWillBeginScroll()
+        
+        self.address_label.type = .continuous
+        self.address_label.speed = .rate(50)
+        self.address_label.fadeLength = 0.0
+        self.address_label.trailingBuffer = 50.0
+        self.address_label.labelWillBeginScroll()
+        
+        self.website_label.type = .continuous
+        self.website_label.speed = .rate(50)
+        self.website_label.fadeLength = 0.0
+        self.website_label.trailingBuffer = 50.0
+        self.website_label.labelWillBeginScroll()
+        
+        self.modalPlaceNameLabel.type = .continuous
+        self.modalPlaceNameLabel.speed = .rate(50)
+        self.modalPlaceNameLabel.fadeLength = 0.0
+        self.modalPlaceNameLabel.trailingBuffer = 50.0
+        self.modalPlaceNameLabel.labelWillBeginScroll()
+        
+        self.modalAddressLabel.type = .continuous
+        self.modalAddressLabel.speed = .rate(50)
+        self.modalAddressLabel.fadeLength = 0.0
+        self.modalAddressLabel.trailingBuffer = 50.0
+        self.modalAddressLabel.labelWillBeginScroll()
+////////////////////////////////////////////////////////////
         
         //////  google rating bar  ///////
-        ratingBar.isEnabled = false;
-        ratingBar.isAbsValue = false;
+        ratingBar.isEnabled = false
+        ratingBar.isAbsValue = false
         ratingBar.canAnimate = false
-        ratingBar.color = UIColor.red;
+        ratingBar.color = UIColor.red
         ratingBar.maxValue = 5
-        ratingBar.value = 0.0;
+        ratingBar.value = 0.0
         
         //////  dogout rating bar  ///////
-        douout_ratingBar.isEnabled = false;
-        douout_ratingBar.isAbsValue = false;
+        douout_ratingBar.isEnabled = false
+        douout_ratingBar.isAbsValue = false
         douout_ratingBar.canAnimate = false
-        douout_ratingBar.color = UIColor.black;
+        douout_ratingBar.color = UIColor.black
         douout_ratingBar.maxValue = 5
-        douout_ratingBar.value = 0.0;
+        douout_ratingBar.value = 0.0
         
         //////  modal rating bar  ///////
-        modalRatingBar.isEnabled = false;
-        modalRatingBar.isAbsValue = false;
+        modalRatingBar.isEnabled = false
+        modalRatingBar.isAbsValue = false
         modalRatingBar.canAnimate = false
-        modalRatingBar.color = UIColor.black;
+        modalRatingBar.color = UIColor.black
         modalRatingBar.maxValue = 5
-        modalRatingBar.value = 0.0;
+        modalRatingBar.value = 0.0
         
         ////////   slide    ///////////////////
-        slidshow.slideshowInterval = 2.0;
-        slidshow.pageIndicatorPosition = .init(horizontal: .center, vertical: .under);
-        slidshow.contentScaleMode = UIView.ContentMode.scaleAspectFill;
+        slidshow.slideshowInterval = 2.0
+        slidshow.pageIndicatorPosition = .init(horizontal: .center, vertical: .under)
+        slidshow.contentScaleMode = UIView.ContentMode.scaleAspectFill
         slidshow.pageIndicator = nil
 
         clLocationManager.delegate = self
-        clLocationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        clLocationManager.desiredAccuracy = kCLLocationAccuracyBest
         clLocationManager.requestWhenInUseAuthorization()
         clLocationManager.startUpdatingLocation()
         
@@ -195,6 +235,10 @@ class HomeViewController: UIViewController, MKMapViewDelegate ,CLLocationManager
         ////  dogout review view tap add   ///////
         let tapdogoutReviewView: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dogoutReviewView_Tapped))
         self.dogoutReviewView.addGestureRecognizer(tapdogoutReviewView)
+        
+        ////   detail box background tranV tap add   ////////
+        let tapdetailBoxTransV: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.detailBoxTransV_Tapped))
+        self.detailBoxTransV.addGestureRecognizer(tapdetailBoxTransV)
     }
     
     @objc func dismissKeyboard() {
@@ -203,10 +247,12 @@ class HomeViewController: UIViewController, MKMapViewDelegate ,CLLocationManager
     
     @objc func websitLabel_Tapped() {
         let url_str = self.website_label.text!
-        if UIApplication.shared.canOpenURL(URL(string: url_str)!) {
-            UIApplication.shared.open(URL(string: url_str)!, options: [:], completionHandler: nil);
-        } else {
-            createAlert(title: "Warning", message: "Cannot open Website");
+        if (url_str != "No website") {
+            if UIApplication.shared.canOpenURL(URL(string: url_str)!) {
+                UIApplication.shared.open(URL(string: url_str)!, options: [:], completionHandler: nil)
+            } else {
+                createAlert(title: "Warning", message: "Cannot open Website")
+            }
         }
     }
     
@@ -260,6 +306,10 @@ class HomeViewController: UIViewController, MKMapViewDelegate ,CLLocationManager
                     }
                 }
         }
+    }
+    
+    @objc func detailBoxTransV_Tapped() {
+        animateSideDetailBox(action: "disappear", animated: true)
     }
     
     
@@ -535,6 +585,49 @@ class HomeViewController: UIViewController, MKMapViewDelegate ,CLLocationManager
         self.performSegue(withIdentifier: "hometodirection_segue", sender: self)
     }
     
+    @IBAction func moveCurrentLocationButtonAction(_ sender: Any) {
+        let currentLocationCoor:CLLocationCoordinate2D = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
+        googleMapView.setCenter(currentLocationCoor, animated: true);
+    }
+    
+    @IBAction func signoutButtonAction(_ sender: Any) {
+//        signoutAlert(title: "Notice!", message: "Do you really want to sign out?")
+        let alert = UIAlertController(title: "Notice!", message:"Do you really want to sign out?", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action) in alert.dismiss(animated: true, completion: nil)
+                self.startActivityIndicator()
+                let requestDic = ["token": Global.token] as [String : Any]
+                AF.request("http://u900336547.hostingerapp.com/api/logout", method: .post, parameters: requestDic, encoding: JSONEncoding.default, headers: nil).responseJSON
+                    {
+                        response in
+                        switch response.result {
+                        case .failure(let error):
+                            print(error)
+                            self.stopActivityIndicator()
+                        case .success(let responseObject):
+                            self.stopActivityIndicator()
+                            let responseDict = responseObject as! NSDictionary
+                            //                    print("dogout reviews: \(responseDict)")
+                            let status = responseDict["status"] as! String
+                            if(status == "success") {
+                                UserDefaults.standard.set("", forKey: "email")
+                                UserDefaults.standard.set("", forKey: "password")
+                                self.performSegue(withIdentifier: "hometosignin_segue", sender: self)
+                            } else {
+                                let error_type = responseDict["error_type"] as! String
+                                if(error_type == "token_error") {
+                                    self.createAlert(title: "Warning!", message: "Your account is expired. Please sign in again.")
+                                }
+                            }
+                        }
+                }
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: {(action) in alert.dismiss(animated: true, completion: nil)
+            
+        }))
+        self.present(alert, animated: true, completion: nil)
+
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "hometowritingreview_segue") {
             let WritingReviewVC = segue.destination as! WritingReviewViewController
@@ -553,7 +646,8 @@ class HomeViewController: UIViewController, MKMapViewDelegate ,CLLocationManager
             DirectionnVC.address = self.address
             DirectionnVC.latitude = self.selected_latitude
             DirectionnVC.longitude = self.selected_longitude
-            
+        } else if(segue.identifier == "hometosignin_segue") {
+            let SigninVC = segue.destination as! SignInViewController
         }
     }
     
@@ -989,9 +1083,11 @@ class HomeViewController: UIViewController, MKMapViewDelegate ,CLLocationManager
     }
     
     func animateSideDetailBox(action: String, animated isAnimated: Bool) {
-        var xPosition = 0;
+        var xPosition = 0
+        self.detailBoxTransV.isHidden = false
         if action != "show" {
             xPosition = -250
+            self.detailBoxTransV.isHidden = true
         }
         
         if isAnimated{
@@ -1051,6 +1147,17 @@ class HomeViewController: UIViewController, MKMapViewDelegate ,CLLocationManager
     func createAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message:message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action) in alert.dismiss(animated: true, completion: nil)}))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func signoutAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message:message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action) in alert.dismiss(animated: true, completion: nil)
+            
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: {(action) in alert.dismiss(animated: true, completion: nil)
+            
+        }))
         self.present(alert, animated: true, completion: nil)
     }
     

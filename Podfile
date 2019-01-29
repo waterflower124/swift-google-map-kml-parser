@@ -10,5 +10,6 @@ pod 'ImageSlideshow', '~> 1.6'
 pod 'Alamofire', '~> 5.0.0.beta.1'
 pod 'AFNetworking', '~> 3.0'
 pod "ImageSlideshow/SDWebImage"
+pod 'MarqueeLabel/Swift'
 
 end

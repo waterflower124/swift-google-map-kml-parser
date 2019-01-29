@@ -22,6 +22,7 @@ PODS:
   - ImageSlideshow/SDWebImage (1.7.0):
     - ImageSlideshow/Core
     - SDWebImage (< 5.0, >= 3.7)
+  - MarqueeLabel/Swift (3.2.0)
   - SDWebImage (4.4.3):
     - SDWebImage/Core (= 4.4.3)
   - SDWebImage/Core (4.4.3)
@@ -32,6 +33,7 @@ DEPENDENCIES:
   - Alamofire (~> 5.0.0.beta.1)
   - ImageSlideshow (~> 1.6)
   - ImageSlideshow/SDWebImage
+  - MarqueeLabel/Swift
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -39,6 +41,7 @@ SPEC REPOS:
     - AFNetworking
     - Alamofire
     - ImageSlideshow
+    - MarqueeLabel
     - SDWebImage
 
 SPEC CHECKSUMS:
@@ -46,8 +49,9 @@ SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   Alamofire: 2ef6d6c984c5d21c366e9b41a9ae7dfee2b67a44
   ImageSlideshow: f8eec5e37a980f60923b585ff23b0e140fd24018
+  MarqueeLabel: 440a502b91a9179bd98f9fff00ba1150650a1c0e
   SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
 
-PODFILE CHECKSUM: 4ae8fd409c9bd3960e1f58c9d65a2ad8e99aee37
+PODFILE CHECKSUM: ef96d85de17cc37ed8abef36239d2e1844aee4da
 
 COCOAPODS: 1.6.0.beta.2
