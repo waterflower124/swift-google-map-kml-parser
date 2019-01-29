@@ -33,7 +33,7 @@ class SignInViewController: UIViewController {
     
     @IBAction func signInActionButton(_ sender: Any) {
         
-        self.performSegue(withIdentifier: "logintohome_segue", sender: self)
+//        self.performSegue(withIdentifier: "logintohome_segue", sender: self)
         
 //        emailText = emailTextField.text!
 //        passwordText = passwordTextField.text!
@@ -54,35 +54,39 @@ class SignInViewController: UIViewController {
 //            return
 //        }
 //
-//        startActivityIndicator()
-//
+        startActivityIndicator()
+
 //        let requestDic = ["email": emailText, "password": passwordText]
-//        AF.request("http://u900336547.hostingerapp.com/api/login", method: .post, parameters: requestDic, encoding: JSONEncoding.default, headers: nil).responseJSON
-//            {
-//                response in
-//                switch response.result {
-//                case .failure(let error):
-//                    print(error)
-//                    self.stopActivityIndicator()
-//                case .success(let responseObject):
-//                    self.stopActivityIndicator()
-//                    let responseDict = responseObject as! NSDictionary
-//
-//                    let status = responseDict["status"] as! String
-//                    if(status == "success") {
-//                        self.performSegue(withIdentifier: "logintohome_segue", sender: self)
-//                    } else {
-//                        let error_type = responseDict["error_type"] as! String
-//                        if(error_type == "no_user") {
-//                            self.createAlert(title: "Warning!", message: "You are not registered. Please create an account.", success: false)
-//                        } else if(error_type == "no_activated") {
-//                            self.createAlert(title: "Warning!", message: "User is not activated. Please check your mail address and password.", success: false)
-//                        } else if(error_type == "wrong_password") {
-//                            self.createAlert(title: "Warning!", message: "Password is incorrect. Please try again.", success: false)
-//                        }
-//                    }
-//                }
-//        }
+        let requestDic = ["email": "janghaoling@gmail.com", "password": "123456"]
+        AF.request("http://u900336547.hostingerapp.com/api/login", method: .post, parameters: requestDic, encoding: JSONEncoding.default, headers: nil).responseJSON
+            {
+                response in
+                switch response.result {
+                case .failure(let error):
+                    print(error)
+                    self.stopActivityIndicator()
+                case .success(let responseObject):
+                    self.stopActivityIndicator()
+                    let responseDict = responseObject as! NSDictionary
+
+                    let status = responseDict["status"] as! String
+                    if(status == "success") {
+                        Global.token = responseDict["data"] as! String
+//                        Global.user_fullname = responseDict["user_name"] as! String
+                        Global.mail_address = self.emailText
+                        self.performSegue(withIdentifier: "logintohome_segue", sender: self)
+                    } else {
+                        let error_type = responseDict["error_type"] as! String
+                        if(error_type == "no_user") {
+                            self.createAlert(title: "Warning!", message: "You are not registered. Please create an account.", success: false)
+                        } else if(error_type == "no_activated") {
+                            self.createAlert(title: "Warning!", message: "User is not activated. Please check your mail address and password.", success: false)
+                        } else if(error_type == "wrong_password") {
+                            self.createAlert(title: "Warning!", message: "Password is incorrect. Please try again.", success: false)
+                        }
+                    }
+                }
+        }
         
     }
     
@@ -107,7 +111,7 @@ class SignInViewController: UIViewController {
         activityIndicator.center = self.view.center
         activityIndicator.hidesWhenStopped = true
         activityIndicator.style = UIActivityIndicatorView.Style.whiteLarge
-        activityIndicator.color = UIColor.black
+        activityIndicator.color = UIColor.blue
         view.addSubview(activityIndicator)
         activityIndicator.startAnimating()
         overlayView = UIView(frame:view.frame);

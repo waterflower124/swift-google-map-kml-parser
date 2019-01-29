@@ -12,11 +12,14 @@ import CoreLocation
 import ImageSlideshow
 import SDWebImage
 import AARatingBar
+import Alamofire
 
-class HomeViewController: UIViewController, MKMapViewDelegate ,CLLocationManagerDelegate, XMLParserDelegate, UISearchBarDelegate {
+
+class HomeViewController: UIViewController, MKMapViewDelegate ,CLLocationManagerDelegate, XMLParserDelegate, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
 
     
     @IBOutlet weak var checkBoxRegion: UIView!
+    @IBOutlet weak var suggestButtonRegionView: UIView!
     @IBOutlet weak var categoryButton: UIButton!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -38,6 +41,9 @@ class HomeViewController: UIViewController, MKMapViewDelegate ,CLLocationManager
     @IBOutlet weak var mainName_label: UILabel!
     @IBOutlet weak var name_label: UILabel!
     @IBOutlet weak var description_label: UILabel!
+    @IBOutlet weak var callButton: UIButton!
+    @IBOutlet weak var websiteButton: UIButton!
+    @IBOutlet weak var douout_ratingBar: AARatingBar!
     @IBOutlet weak var address_label: UILabel!
     @IBOutlet weak var phone_label: UILabel!
     @IBOutlet weak var rating_label: UILabel!
@@ -46,7 +52,27 @@ class HomeViewController: UIViewController, MKMapViewDelegate ,CLLocationManager
     @IBOutlet weak var website_label: UILabel!
     @IBOutlet weak var photocountLabel: UILabel!
     @IBOutlet weak var photogoogledescLabel: UILabel!
+    @IBOutlet weak var dogoutReviewView: UIView!
     
+    @IBOutlet weak var reportlocationView: UIView!
+    
+    ///////  variables for show reviews modal   //////
+    @IBOutlet weak var dogoutReviewModalTransV: UIView!
+    @IBOutlet weak var dogoutReviewModalView: UIView!
+    @IBOutlet weak var modalPlaceNameLabel: UILabel!
+    @IBOutlet weak var modalAddressLabel: UILabel!
+    @IBOutlet weak var modalReviewLabel: UILabel!
+    @IBOutlet weak var modalRatingBar: AARatingBar!
+    @IBOutlet weak var modalCountReviewsLabel: UILabel!
+    @IBOutlet weak var reportsListTableVIew: UITableView!
+    
+    var current_display_page = 1
+    var reviews_array = [[String]]()
+    var is_end: Bool = true
+    var reach_end: Bool = false
+    var totalReviewsCount: Int = 0;
+    
+    //////////////////////////////
     
     
     //////  variable for google map    ////////
@@ -55,8 +81,10 @@ class HomeViewController: UIViewController, MKMapViewDelegate ,CLLocationManager
     var currentLocation = CLLocation()
     var destinationLocation = CLLocation()
     var first_running = true//use for display annotation,  if update current location it's value is false
+    var selected_latitude: String = ""
+    var selected_longitude: String = ""
     
-    ///////   for activityt indicator  //////////
+    ///////   for activity indicator  //////////
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView();
     var overlayView:UIView = UIView();
     
@@ -110,12 +138,29 @@ class HomeViewController: UIViewController, MKMapViewDelegate ,CLLocationManager
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //////  google rating bar  ///////
         ratingBar.isEnabled = false;
         ratingBar.isAbsValue = false;
         ratingBar.canAnimate = false
         ratingBar.color = UIColor.red;
         ratingBar.maxValue = 5
         ratingBar.value = 0.0;
+        
+        //////  dogout rating bar  ///////
+        douout_ratingBar.isEnabled = false;
+        douout_ratingBar.isAbsValue = false;
+        douout_ratingBar.canAnimate = false
+        douout_ratingBar.color = UIColor.black;
+        douout_ratingBar.maxValue = 5
+        douout_ratingBar.value = 0.0;
+        
+        //////  modal rating bar  ///////
+        modalRatingBar.isEnabled = false;
+        modalRatingBar.isAbsValue = false;
+        modalRatingBar.canAnimate = false
+        modalRatingBar.color = UIColor.black;
+        modalRatingBar.maxValue = 5
+        modalRatingBar.value = 0.0;
         
         ////////   slide    ///////////////////
         slidshow.slideshowInterval = 2.0;
@@ -142,6 +187,14 @@ class HomeViewController: UIViewController, MKMapViewDelegate ,CLLocationManager
         ////  wesite lable tap add   ///////
         let tapWebsiteLabel: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.websitLabel_Tapped))
         self.website_label.addGestureRecognizer(tapWebsiteLabel)
+        
+        ////  report location view tap add   ///////
+        let tapreportlocationView: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.reportlocationView_Tapped))
+        self.reportlocationView.addGestureRecognizer(tapreportlocationView)
+        
+        ////  dogout review view tap add   ///////
+        let tapdogoutReviewView: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dogoutReviewView_Tapped))
+        self.dogoutReviewView.addGestureRecognizer(tapdogoutReviewView)
     }
     
     @objc func dismissKeyboard() {
@@ -157,9 +210,61 @@ class HomeViewController: UIViewController, MKMapViewDelegate ,CLLocationManager
         }
     }
     
+    @objc func reportlocationView_Tapped() {
+        self.performSegue(withIdentifier: "hometoreportlocation_segue", sender: self)
+    }
+    
+    @objc func dogoutReviewView_Tapped() {
+        
+        startActivityIndicator()
+        let requestDic = ["token": Global.token, "place": self.place_name, "address": self.address, "page": self.current_display_page] as [String : Any]
+        AF.request("http://u900336547.hostingerapp.com/api/get_app_review", method: .post, parameters: requestDic, encoding: JSONEncoding.default, headers: nil).responseJSON
+            {
+                response in
+                switch response.result {
+                case .failure(let error):
+                    print(error)
+                    self.stopActivityIndicator()
+                case .success(let responseObject):
+                    self.stopActivityIndicator()
+                    let responseDict = responseObject as! NSDictionary
+//                    print("dogout reviews: \(responseDict)")
+                    let status = responseDict["status"] as! String
+                    if(status == "success") {
+                        if let data = responseDict["data"] as? [String: Any] {
+                            self.modalPlaceNameLabel.text = data["place"] as? String
+                            self.modalAddressLabel.text = data["address"] as? String
+                            let modalRating = data["rating"] as? Double
+                            self.modalReviewLabel.text = String(format: "%.1f", modalRating!)
+                            self.modalRatingBar.updateValue(with: CGFloat(modalRating!))
+                            self.totalReviewsCount = data["total"] as! Int
+                            self.modalCountReviewsLabel.text = String(self.totalReviewsCount) + " Dogout reviews"
+                            self.is_end = data["is_end"] as! Bool
+                            if(self.totalReviewsCount > 0) {
+                                let reports = data["reports"] as! [Dictionary<String, AnyObject>]
+                                for i in 0..<reports.count {
+                                    self.reviews_array.append([reports[i]["user_name"] as! String, String(format:"%.1f", reports[i]["rating"] as! Double), reports[i]["comment"] as! String])
+                                }
+                            }
+                            self.reportsListTableVIew.reloadData()
+                            self.dogoutReviewModalTransV.isHidden = false
+                            self.dogoutReviewModalView.isHidden = false
+                        }
+                    } else {
+                        let error_type = responseDict["error_type"] as! String
+                        if(error_type == "token_error") {
+                            self.createAlert(title: "Warning!", message: "Your account is expired. Please sign in again.")
+                        } else if(error_type == "registered") {
+                            self.createAlert(title: "Warning!", message: "You are already suggest review for this place.")
+                        }
+                    }
+                }
+        }
+    }
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         animateSideDetailBox(action: "disappear", animated: false)
         startActivityIndicator()
         DispatchQueue.global(qos: .userInteractive).async {
@@ -175,21 +280,131 @@ class HomeViewController: UIViewController, MKMapViewDelegate ,CLLocationManager
         }
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.reviews_array.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reporttableviewcell", for: indexPath) as! ReportsTableViewCell;
+        cell.usernameLabel.text = self.reviews_array[indexPath.row][0]
+        cell.ratingLabel.text = self.reviews_array[indexPath.row][1] + "/5"
+        cell.commentLabel.text = self.reviews_array[indexPath.row][2]
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 90
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.section + 1 == tableView.numberOfSections && indexPath.row + 1 == self.reviews_array.count {
+            if !self.is_end && self.reach_end {
+                print("rrrrrrrrrrr")
+                self.current_display_page = self.current_display_page + 1
+                startActivityIndicator()
+                let requestDic = ["token": Global.token, "place": self.place_name, "address": self.address, "page": self.current_display_page] as [String : Any]
+                AF.request("http://u900336547.hostingerapp.com/api/get_app_review", method: .post, parameters: requestDic, encoding: JSONEncoding.default, headers: nil).responseJSON
+                    {
+                        response in
+                        switch response.result {
+                        case .failure(let error):
+                            print(error)
+                            self.stopActivityIndicator()
+                        case .success(let responseObject):
+                            self.stopActivityIndicator()
+                            let responseDict = responseObject as! NSDictionary
+                            //                    print("dogout reviews: \(responseDict)")
+                            let status = responseDict["status"] as! String
+                            if(status == "success") {
+                                if let data = responseDict["data"] as? [String: Any] {
+                                    self.is_end = data["is_end"] as! Bool
+                                    let reports = data["reports"] as! [Dictionary<String, AnyObject>]
+                                    if(reports.count > 0) {
+                                        for i in 0..<reports.count {
+                                            self.reviews_array.append([reports[i]["user_name"] as! String, String(format:"%.1f", reports[i]["rating"] as! Double), reports[i]["comment"] as! String])
+                                        }
+                                    }
+                                    self.reportsListTableVIew.reloadData()
+                                }
+                            } else {
+                                let error_type = responseDict["error_type"] as! String
+                                if(error_type == "token_error") {
+                                    self.createAlert(title: "Warning!", message: "Your account is expired. Please sign in again.")
+                                } else if(error_type == "registered") {
+                                    self.createAlert(title: "Warning!", message: "You are already suggest review for this place.")
+                                }
+                            }
+                        }
+                }
+            }
+            self.reach_end = true
+        }
+    }
+    
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        let height = scrollView.frame.size.height
+//        let contentYoffset = scrollView.contentOffset.y
+//        let distanceFromBottom = scrollView.contentSize.height - contentYoffset
+//        if(distanceFromBottom < height) {
+//            if !self.is_end {
+//                self.current_display_page = self.current_display_page + 1
+//                startActivityIndicator()
+//                let requestDic = ["token": Global.token, "place": self.place_name, "address": self.address, "page": self.current_display_page] as [String : Any]
+//                AF.request("http://u900336547.hostingerapp.com/api/get_app_review", method: .post, parameters: requestDic, encoding: JSONEncoding.default, headers: nil).responseJSON
+//                    {
+//                        response in
+//                        switch response.result {
+//                        case .failure(let error):
+//                            print(error)
+//                            self.stopActivityIndicator()
+//                        case .success(let responseObject):
+//                            self.stopActivityIndicator()
+//                            let responseDict = responseObject as! NSDictionary
+//                            //                    print("dogout reviews: \(responseDict)")
+//                            let status = responseDict["status"] as! String
+//                            if(status == "success") {
+//                                if let data = responseDict["data"] as? [String: Any] {
+//                                    self.is_end = data["is_end"] as! Bool
+//                                    let reports = data["reports"] as! [Dictionary<String, AnyObject>]
+//                                    if(reports.count > 0) {
+//                                        for i in 0..<reports.count {
+//                                            self.reviews_array.append([reports[i]["user_name"] as! String, String(format:"%.1f", reports[i]["rating"] as! Double), reports[i]["comment"] as! String])
+//                                        }
+//                                    }
+//                                    self.reportsListTableVIew.reloadData()
+//                                }
+//                            } else {
+//                                let error_type = responseDict["error_type"] as! String
+//                                if(error_type == "token_error") {
+//                                    self.createAlert(title: "Warning!", message: "Your account is expired. Please sign in again.")
+//                                } else if(error_type == "registered") {
+//                                    self.createAlert(title: "Warning!", message: "You are already suggest review for this place.")
+//                                }
+//                            }
+//                        }
+//                }
+//            }
+//        }
+//    }
+    
     @IBAction func disappearButtonAction(_ sender: Any) {
         animateSideDetailBox(action: "disappear", animated: true)
     }
     
     @IBAction func categoryButtonAction(_ sender: Any) {
         if(checkBoxRegion.isHidden) {
-            checkBoxRegion.isHidden = false;
+            checkBoxRegion.isHidden = false
             categoryButton.setImage(UIImage(named: "cancel"), for: UIControl.State.normal)
+            suggestButtonRegionView.isHidden = false
         } else {
-            checkBoxRegion.isHidden = true;
+            checkBoxRegion.isHidden = true
             categoryButton.setImage(UIImage(named: "plus"), for: UIControl.State.normal)
+            suggestButtonRegionView.isHidden = true
         }
         if(!searchBar.isHidden) {
             searchBar.isHidden = true
             searchButton.setImage(UIImage(named: "search"), for: UIControl.State.normal)
+            
         }
     }
     
@@ -283,6 +498,65 @@ class HomeViewController: UIViewController, MKMapViewDelegate ,CLLocationManager
         }
     }
     
+    @IBAction func websiteButtonAction(_ sender: Any) {
+        let url_str = self.website_label.text!
+        if UIApplication.shared.canOpenURL(URL(string: url_str)!) {
+            UIApplication.shared.open(URL(string: url_str)!, options: [:], completionHandler: nil);
+        } else {
+            createAlert(title: "Warning", message: "Cannot open Website");
+        }
+    }
+    
+    @IBAction func callButtonAction(_ sender: Any) {
+//        let new_phonenumber = self.phone_nember.replacingOccurrences(of: " ", with: "")
+        let new_phonenumber = self.phone_nember.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
+        if let phoneCallURL = URL(string: "tel://+\(new_phonenumber)") {
+            let application:UIApplication = UIApplication.shared
+            if (application.canOpenURL(phoneCallURL)) {
+                application.open(phoneCallURL, options: [:], completionHandler: nil)
+            } else {
+                createAlert(title: "Warning!", message: "can not call")
+            }
+        } else {
+            print("no callllllll:  \(self.phone_nember)")
+        }
+       
+    }
+    
+    @IBAction func writereviewButtonAction(_ sender: Any) {
+        self.performSegue(withIdentifier: "hometowritingreview_segue", sender: self)
+    }
+    
+    @IBAction func suggestnewlocationButtonAction(_ sender: Any) {
+        self.performSegue(withIdentifier: "hometosuggestnewlocation_segue", sender: self)
+    }
+    
+    @IBAction func directionButtonAction(_ sender: Any) {
+        self.performSegue(withIdentifier: "hometodirection_segue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "hometowritingreview_segue") {
+            let WritingReviewVC = segue.destination as! WritingReviewViewController
+            WritingReviewVC.address = self.address
+            WritingReviewVC.place_name = self.place_name
+        } else if(segue.identifier == "hometoreportlocation_segue") {
+            let ReportLocationVC = segue.destination as! ReportLocationViewController
+            ReportLocationVC.address = self.address
+            ReportLocationVC.place_name = self.place_name
+        } else if(segue.identifier == "hometosuggestnewlocation_segue") {
+            let SuggestNewLocationVC = segue.destination as! SuggestNewLocationViewController
+//            ReportLocationVC.address = self.address
+//            ReportLocationVC.place_name = self.place_name
+        } else if(segue.identifier == "hometodirection_segue") {
+            let DirectionnVC = segue.destination as! DirectionsViewController
+            DirectionnVC.address = self.address
+            DirectionnVC.latitude = self.selected_latitude
+            DirectionnVC.longitude = self.selected_longitude
+            
+        }
+    }
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         currentLocation = locations[0]
         
@@ -352,15 +626,18 @@ class HomeViewController: UIViewController, MKMapViewDelegate ,CLLocationManager
         description_label.text = annotation.place_description
         let place_name_kml = annotation.title
         
-        var findGoogleAPI = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?";
-        findGoogleAPI += "input=" + place_name_kml!;
-        findGoogleAPI += "&inputtype=textquery";
-        findGoogleAPI += "&locationbias=circle:2000@" + String(describing: annotation.coordinate.latitude) + "," + String(describing: annotation.coordinate.longitude);
-        findGoogleAPI += "&key=" + map_key;
+        self.selected_latitude = String(describing: annotation.coordinate.latitude)
+        self.selected_longitude = String(describing: annotation.coordinate.longitude)
+        
+        var findGoogleAPI = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?"
+        findGoogleAPI += "input=" + place_name_kml!
+        findGoogleAPI += "&inputtype=textquery"
+        findGoogleAPI += "&locationbias=circle:2000@" + String(describing: annotation.coordinate.latitude) + "," + String(describing: annotation.coordinate.longitude)
+        findGoogleAPI += "&key=" + map_key
         
         findGoogleAPI = findGoogleAPI.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!;
-        var url_placeID = URLRequest(url: URL(string: findGoogleAPI)!);
-        url_placeID.httpMethod = "GET";
+        var url_placeID = URLRequest(url: URL(string: findGoogleAPI)!)
+        url_placeID.httpMethod = "GET"
         
 //        print("find API:   \(findGoogleAPI)");
         startActivityIndicator();
@@ -433,10 +710,10 @@ class HomeViewController: UIViewController, MKMapViewDelegate ,CLLocationManager
                         } else {
                             self.address = result["formatted_address"] as! String
                         }
-                        if(result["formatted_phone_number"] == nil) {
+                        if(result["international_phone_number"] == nil) {
                             self.phone_nember = "No phone number"
                         } else {
-                            self.phone_nember = result["formatted_phone_number"] as! String
+                            self.phone_nember = result["international_phone_number"] as! String
                         }
                         if(result["website"] == nil) {
                             self.website = "No website"
@@ -466,7 +743,6 @@ class HomeViewController: UIViewController, MKMapViewDelegate ,CLLocationManager
                         DispatchQueue.main.async {
                             self.updateUI()
                         }
-                        
                         return
                     }
                 }
@@ -484,6 +760,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate ,CLLocationManager
     }
     
     func updateUI() {
+        var dogout_rating = 0.0
         if photo_array.count > 0 {
             do {
                 let first_url_image = URL(string: photo_array[0]);
@@ -501,17 +778,43 @@ class HomeViewController: UIViewController, MKMapViewDelegate ,CLLocationManager
             self.mainImageView.contentMode = UIView.ContentMode.scaleAspectFit
             self.mainImageView.image = UIImage(named: "logo")
         }
-        
+        print("place_name:  \(self.place_name)")
         mainName_label.text = place_name
         name_label.text = place_name
         
         address_label.text = address
+
         phone_label.text = phone_nember
+        if phone_nember == "No phone number" {
+            callButton.backgroundColor = UIColor(red: 225/255, green: 225/255, blue: 225/255, alpha: 1.0)
+            callButton.setTitle("call not available", for: UIControl.State.normal)
+            callButton.titleLabel?.font = UIFont(name: (callButton.titleLabel?.font.fontName)!, size: 12)
+            callButton.setTitleColor(UIColor.white, for: UIControl.State.normal)
+            callButton.isUserInteractionEnabled = false
+        } else {
+            callButton.backgroundColor = UIColor(red: 255/255, green: 253/255, blue: 93/255, alpha: 1.0)
+            callButton.setTitle("call", for: UIControl.State.normal)
+            callButton.titleLabel?.font = UIFont(name: (callButton.titleLabel?.font.fontName)!, size: 17)
+            callButton.setTitleColor(UIColor.black, for: UIControl.State.normal)
+            callButton.isUserInteractionEnabled = true
+        }
+
         website_label.text = website
-//        website_button.setTitle(website, for: UIControlState.normal);
+        if website == "No website" {
+            websiteButton.backgroundColor = UIColor(red: 225/255, green: 225/255, blue: 225/255, alpha: 1.0)
+            websiteButton.setTitle("website not available", for: UIControl.State.normal)
+            websiteButton.titleLabel?.font = UIFont(name: (websiteButton.titleLabel?.font.fontName)!, size: 12)
+            websiteButton.setTitleColor(UIColor.white, for: UIControl.State.normal)
+            websiteButton.isUserInteractionEnabled = false
+        } else {
+            websiteButton.backgroundColor = UIColor(red: 255/255, green: 253/255, blue: 93/255, alpha: 1.0)
+            websiteButton.setTitle("website", for: UIControl.State.normal)
+            websiteButton.titleLabel?.font = UIFont(name: (websiteButton.titleLabel?.font.fontName)!, size: 17)
+            websiteButton.setTitleColor(UIColor.black, for: UIControl.State.normal)
+            websiteButton.isUserInteractionEnabled = true
+        }
         rating_label.text = String(format:"%.1f", rating)
         self.ratingBar.updateValue(with: CGFloat(rating))
-        
         
         if photo_array.count > 0 {
             for i in 0..<photo_array.count {
@@ -527,12 +830,45 @@ class HomeViewController: UIViewController, MKMapViewDelegate ,CLLocationManager
             photocountLabel.text = "0"
         }
         
-        DispatchQueue.main.async {
-            if self.activityIndicator.isAnimating {
-                self.stopActivityIndicator()
-            }
-            self.animateSideDetailBox(action: "show", animated: true)
+        /////////  get for dogout reating ////////////
+        let requestDic = ["token": Global.token, "place": self.place_name, "address": self.address]
+        AF.request("http://u900336547.hostingerapp.com/api/get_app_review", method: .post, parameters: requestDic, encoding: JSONEncoding.default, headers: nil).responseJSON
+            {
+                response in
+                switch response.result {
+                case .failure(let error):
+                    print(error)
+                    self.stopActivityIndicator()
+                case .success(let responseObject):
+                    self.stopActivityIndicator()
+                    let responseDict = responseObject as! NSDictionary
+                    
+                    let status = responseDict["status"] as! String
+                    if(status == "success") {
+//                        self.douout_ratingBar.updateValue(with: responseDict["data"])
+                        let data = responseDict["data"] as? [String: AnyObject]
+                        dogout_rating = data?["rating"] as! Double
+                        self.douout_ratingBar.updateValue(with: CGFloat(dogout_rating))
+                    } else {
+                        let error_type = responseDict["error_type"] as! String
+//                        if(error_type == "no_user") {
+//                            self.createAlert(title: "Warning!", message: "You are not registered. Please create an account.")
+//                        } else if(error_type == "no_activated") {
+//                            self.createAlert(title: "Warning!", message: "User is not activated. Please check your mail address and password.")
+//                        } else if(error_type == "wrong_password") {
+//                            self.createAlert(title: "Warning!", message: "Password is incorrect. Please try again.")
+//                        }
+                    }
+                    DispatchQueue.main.async {
+                        if self.activityIndicator.isAnimating {
+                            self.stopActivityIndicator()
+                        }
+                        self.animateSideDetailBox(action: "show", animated: true)
+                    }
+                }
         }
+        ////////////////////
+
     }
     
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
@@ -742,6 +1078,23 @@ class HomeViewController: UIViewController, MKMapViewDelegate ,CLLocationManager
             }
         }
     }
+    
+    //////////// modal action list  //////////////
+    @IBAction func modalCloseButtonAction(_ sender: Any) {
+        self.dogoutReviewModalTransV.isHidden = true
+        self.dogoutReviewModalView.isHidden = true
+        self.reviews_array = []
+        self.is_end = false
+        self.reach_end = false
+        self.current_display_page = 1
+    }
+    
+    @IBAction func modalWriteReviewButtonAction(_ sender: Any) {
+        self.dogoutReviewModalTransV.isHidden = true
+        self.dogoutReviewModalView.isHidden = true
+        self.performSegue(withIdentifier: "hometowritingreview_segue", sender: self)
+    }
+    //////////////////
 }
 
 class customAnnotation: NSObject, MKAnnotation {
