@@ -24,11 +24,23 @@ class VerifyCodeViewController: UIViewController {
         super.viewDidLoad()
 
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        
+        ////  dismiss keyboard   ///////
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        tap.cancelsTouchesInView = false
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     @IBAction func verifyButtonAction(_ sender: Any) {
         verification_code = verificationCodeTextField.text!
-        
+        if(verification_code == "") {
+            self.createAlert(title: "Warning!", message: "Please input verification code.", success: false)
+            return;
+        }
         startActivityIndicator()
         
         let requestDic = ["email":email, "code": verification_code]

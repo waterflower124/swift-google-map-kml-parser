@@ -36,6 +36,15 @@ class SignUpViewController: UIViewController {
         } else {
             termsRectangleButton.backgroundColor = UIColor.white
         }
+        
+        ////  dismiss keyboard   ///////
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        tap.cancelsTouchesInView = false
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
 
@@ -58,10 +67,10 @@ class SignUpViewController: UIViewController {
         password = passwordTextField.text!
         confirm_password = confirmTextField.text!
         
-        email = "watersu91125@outlook.com"
-        fullname = "aaa"
-        password = "aaaaaa"
-        confirm_password = "aaaaaa"
+//        email = "watersu91125@outlook.com"
+//        fullname = "aaa"
+//        password = "aaaaaa"
+//        confirm_password = "aaaaaa"
         
         if(!checkTerms) {
             createAlert(title: "Warning!", message: "Please check Terms & Conditions.", success: false)

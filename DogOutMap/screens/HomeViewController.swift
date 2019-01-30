@@ -14,9 +14,9 @@ import SDWebImage
 import AARatingBar
 import Alamofire
 import MarqueeLabel
+import GooglePlaces
 
-
-class HomeViewController: UIViewController, MKMapViewDelegate ,CLLocationManagerDelegate, XMLParserDelegate, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
+class HomeViewController: UIViewController, MKMapViewDelegate ,CLLocationManagerDelegate, XMLParserDelegate, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
     
     @IBOutlet weak var checkBoxRegion: UIView!
@@ -77,7 +77,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate ,CLLocationManager
     //////////////////////////////
     
     
-    //////  variable for google map    ////////
+    //////  variables for google map  /////////
     let map_key = "AIzaSyAUfciCLFycnIUlrUUwjApQyhRyNr01o7g"
     var clLocationManager = CLLocationManager()
     var currentLocation = CLLocation()
@@ -136,6 +136,20 @@ class HomeViewController: UIViewController, MKMapViewDelegate ,CLLocationManager
     var sdWebImageSource = [SDWebImageSource]()
     
     
+    ///////// google places autocomplete  /////////
+    lazy var filter:GMSAutocompleteFilter = {
+        let filter = GMSAutocompleteFilter()
+        filter.type = .address
+        return filter
+    }()
+    
+    var googleAutoCompletePlaces = [GMSAutocompletePrediction]()
+    
+    @IBOutlet weak var googleAutoPlacesTableView: UITableView!
+    ///////////////
+
+    
+    var first_place = true;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -223,6 +237,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate ,CLLocationManager
         ////  dismiss keyboard   ///////
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         view.addGestureRecognizer(tap)
+        tap.cancelsTouchesInView = false
         
         ////  wesite lable tap add   ///////
         let tapWebsiteLabel: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.websitLabel_Tapped))
@@ -330,64 +345,134 @@ class HomeViewController: UIViewController, MKMapViewDelegate ,CLLocationManager
         }
     }
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchText)
+        GMSPlacesClient.shared().autocompleteQuery(searchText, bounds: nil, filter: filter, callback: {(results, error) -> Void in
+            if let error = error {
+                print("Autocomplete error \(error)")
+                return
+            }
+            
+            if let results = results {
+                self.googleAutoCompletePlaces = results
+                self.googleAutoPlacesTableView.reloadData()
+//                print(self.googleAutoCompletePlaces)
+//                print("\\\\\\\\\\\\\\\\")
+            }
+        })
+    }
+    
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        animateSideDetailBox(action: "disappear", animated: true)
+        self.googleAutoPlacesTableView.isHidden = false
+        self.checkBoxRegion.isHidden = true
+        suggestButtonRegionView.isHidden = true
+        return true
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.reviews_array.count
+        if(tableView == self.googleAutoPlacesTableView) {
+            return self.googleAutoCompletePlaces.count
+        } else {
+            return self.reviews_array.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reporttableviewcell", for: indexPath) as! ReportsTableViewCell;
-        cell.usernameLabel.text = self.reviews_array[indexPath.row][0]
-        cell.ratingLabel.text = self.reviews_array[indexPath.row][1] + "/5"
-        cell.commentLabel.text = self.reviews_array[indexPath.row][2]
-        return cell
+        if(tableView == googleAutoPlacesTableView) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "googleplacetableviewcell", for: indexPath) as! GooglePlacesTableViewCell;
+            cell.placenameLabel.attributedText = self.googleAutoCompletePlaces[indexPath.row].attributedPrimaryText
+            cell.addressLabel.attributedText = self.googleAutoCompletePlaces[indexPath.row].attributedSecondaryText
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "reporttableviewcell", for: indexPath) as! ReportsTableViewCell;
+            cell.usernameLabel.text = self.reviews_array[indexPath.row][0]
+            cell.ratingLabel.text = self.reviews_array[indexPath.row][1] + "/5"
+            cell.commentLabel.text = self.reviews_array[indexPath.row][2]
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
+        if(tableView == self.googleAutoPlacesTableView) {
+            return 60
+        } else {
+            return 90
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView == googleAutoPlacesTableView {
+            print("ererererer")
+            GMSPlacesClient.shared().lookUpPlaceID(self.googleAutoCompletePlaces[indexPath.row].placeID ?? "") { (place, error) in
+                if error == nil && place != nil {
+                    
+                    let autocomplete_selected_latitude = place?.coordinate.latitude ?? 0.0
+                    let autocomplete_selected_longitude = place?.coordinate.longitude ?? 0.0
+                    let autocomplete_place_id = place?.placeID ?? ""
+                    let autocomplete_place_name = place?.name ?? ""
+                    
+                    let annotation = customAnnotation(title:autocomplete_place_name, subtitle:"", location:CLLocationCoordinate2DMake(autocomplete_selected_latitude, autocomplete_selected_longitude), place_id:autocomplete_place_id, place_description:"");
+                    self.googleMapView.addAnnotation(annotation);
+//                    if (self.first_place) {
+                        let currentLocationCoor:CLLocationCoordinate2D = CLLocationCoordinate2DMake(autocomplete_selected_latitude, autocomplete_selected_longitude);
+                        self.googleMapView.setCenter(currentLocationCoor, animated: true);
+//                        self.first_place = false;
+//                    }
+                    self.searchBar.text = autocomplete_place_name
+                    self.googleAutoPlacesTableView.isHidden = true
+                }
+                else {
+                    print("Someting went wrong please try again.")
+                }
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.section + 1 == tableView.numberOfSections && indexPath.row + 1 == self.reviews_array.count {
-            if !self.is_end && self.reach_end {
-                print("rrrrrrrrrrr")
-                self.current_display_page = self.current_display_page + 1
-                startActivityIndicator()
-                let requestDic = ["token": Global.token, "place": self.place_name, "address": self.address, "page": self.current_display_page] as [String : Any]
-                AF.request("http://u900336547.hostingerapp.com/api/get_app_review", method: .post, parameters: requestDic, encoding: JSONEncoding.default, headers: nil).responseJSON
-                    {
-                        response in
-                        switch response.result {
-                        case .failure(let error):
-                            print(error)
-                            self.stopActivityIndicator()
-                        case .success(let responseObject):
-                            self.stopActivityIndicator()
-                            let responseDict = responseObject as! NSDictionary
-                            //                    print("dogout reviews: \(responseDict)")
-                            let status = responseDict["status"] as! String
-                            if(status == "success") {
-                                if let data = responseDict["data"] as? [String: Any] {
-                                    self.is_end = data["is_end"] as! Bool
-                                    let reports = data["reports"] as! [Dictionary<String, AnyObject>]
-                                    if(reports.count > 0) {
-                                        for i in 0..<reports.count {
-                                            self.reviews_array.append([reports[i]["user_name"] as! String, String(format:"%.1f", reports[i]["rating"] as! Double), reports[i]["comment"] as! String])
+        if(tableView == self.reportsListTableVIew) {
+            if indexPath.section + 1 == tableView.numberOfSections && indexPath.row + 1 == self.reviews_array.count {
+                if !self.is_end && self.reach_end {
+                    print("rrrrrrrrrrr")
+                    self.current_display_page = self.current_display_page + 1
+                    startActivityIndicator()
+                    let requestDic = ["token": Global.token, "place": self.place_name, "address": self.address, "page": self.current_display_page] as [String : Any]
+                    AF.request("http://u900336547.hostingerapp.com/api/get_app_review", method: .post, parameters: requestDic, encoding: JSONEncoding.default, headers: nil).responseJSON
+                        {
+                            response in
+                            switch response.result {
+                            case .failure(let error):
+                                print(error)
+                                self.stopActivityIndicator()
+                            case .success(let responseObject):
+                                self.stopActivityIndicator()
+                                let responseDict = responseObject as! NSDictionary
+                                //                    print("dogout reviews: \(responseDict)")
+                                let status = responseDict["status"] as! String
+                                if(status == "success") {
+                                    if let data = responseDict["data"] as? [String: Any] {
+                                        self.is_end = data["is_end"] as! Bool
+                                        let reports = data["reports"] as! [Dictionary<String, AnyObject>]
+                                        if(reports.count > 0) {
+                                            for i in 0..<reports.count {
+                                                self.reviews_array.append([reports[i]["user_name"] as! String, String(format:"%.1f", reports[i]["rating"] as! Double), reports[i]["comment"] as! String])
+                                            }
                                         }
+                                        self.reportsListTableVIew.reloadData()
                                     }
-                                    self.reportsListTableVIew.reloadData()
-                                }
-                            } else {
-                                let error_type = responseDict["error_type"] as! String
-                                if(error_type == "token_error") {
-                                    self.createAlert(title: "Warning!", message: "Your account is expired. Please sign in again.")
-                                } else if(error_type == "registered") {
-                                    self.createAlert(title: "Warning!", message: "You are already suggest review for this place.")
+                                } else {
+                                    let error_type = responseDict["error_type"] as! String
+                                    if(error_type == "token_error") {
+                                        self.createAlert(title: "Warning!", message: "Your account is expired. Please sign in again.")
+                                    } else if(error_type == "registered") {
+                                        self.createAlert(title: "Warning!", message: "You are already suggest review for this place.")
+                                    }
                                 }
                             }
-                        }
+                    }
                 }
+                self.reach_end = true
             }
-            self.reach_end = true
         }
     }
     
@@ -452,19 +537,28 @@ class HomeViewController: UIViewController, MKMapViewDelegate ,CLLocationManager
             suggestButtonRegionView.isHidden = true
         }
         if(!searchBar.isHidden) {
+            searchBar.text = ""
             searchBar.isHidden = true
             searchButton.setImage(UIImage(named: "search"), for: UIControl.State.normal)
-            
+            self.googleAutoPlacesTableView.isHidden = true
+            self.googleAutoCompletePlaces = []
+            self.googleAutoPlacesTableView.reloadData()
         }
     }
     
     @IBAction func searchButtonAction(_ sender: Any) {
         if(searchBar.isHidden) {
+            
             searchBar.isHidden = false
             searchButton.setImage(UIImage(named: "left-arrow-black"), for: UIControl.State.normal)
+//            self.googleAutoPlacesTableView.isHidden = false
         } else {
+            searchBar.text = ""
             searchBar.isHidden = true
             searchButton.setImage(UIImage(named: "search"), for: UIControl.State.normal)
+            self.googleAutoPlacesTableView.isHidden = true
+            self.googleAutoCompletePlaces = []
+            self.googleAutoPlacesTableView.reloadData()
         }
     }
     
@@ -1219,3 +1313,5 @@ class customAnnotation: NSObject, MKAnnotation {
         self.place_description = place_description
     }
 }
+
+

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import GoogleMaps
+import GooglePlaces
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             statusBar.backgroundColor = UIColor.black
         }
 //        UIApplication.shared.statusBarStyle = .lightContent
+        
+        GMSServices.provideAPIKey ("AIzaSyAUfciCLFycnIUlrUUwjApQyhRyNr01o7g")
+        GMSPlacesClient.provideAPIKey ("AIzaSyAUfciCLFycnIUlrUUwjApQyhRyNr01o7g")
         return true
     }
 

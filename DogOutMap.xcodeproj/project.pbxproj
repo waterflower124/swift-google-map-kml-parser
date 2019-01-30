@@ -40,6 +40,7 @@
 		23296F8021E7A3B20013AAC8 /* dog.png in Resources */ = {isa = PBXBuildFile; fileRef = 23296F7F21E7A3B00013AAC8 /* dog.png */; };
 		23296F8221E7A3DE0013AAC8 /* marker.png in Resources */ = {isa = PBXBuildFile; fileRef = 23296F8121E7A3DE0013AAC8 /* marker.png */; };
 		23296F8421E7EE280013AAC8 /* mapInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23296F8321E7EE280013AAC8 /* mapInfo.swift */; };
+		234792842201B45300BC4CA9 /* GooglePlacesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234792832201B45300BC4CA9 /* GooglePlacesTableViewCell.swift */; };
 		234BDED321FB1F3800B2C944 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234BDED221FB1F3800B2C944 /* Global.swift */; };
 		2366AB3C21FEA62300868797 /* dogoutreview_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 2366AB3B21FEA62200868797 /* dogoutreview_close.png */; };
 		2366AB3E21FEFB6D00868797 /* modal_write_review.png in Resources */ = {isa = PBXBuildFile; fileRef = 2366AB3D21FEFB6B00868797 /* modal_write_review.png */; };
@@ -120,6 +121,7 @@
 		23296F7F21E7A3B00013AAC8 /* dog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dog.png; sourceTree = "<group>"; };
 		23296F8121E7A3DE0013AAC8 /* marker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marker.png; sourceTree = "<group>"; };
 		23296F8321E7EE280013AAC8 /* mapInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapInfo.swift; sourceTree = "<group>"; };
+		234792832201B45300BC4CA9 /* GooglePlacesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePlacesTableViewCell.swift; sourceTree = "<group>"; };
 		234BDED221FB1F3800B2C944 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		2366AB3B21FEA62200868797 /* dogoutreview_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dogoutreview_close.png; sourceTree = "<group>"; };
 		2366AB3D21FEFB6B00868797 /* modal_write_review.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modal_write_review.png; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				2366AB3F21FF579500868797 /* ReportsTableViewCell.swift */,
 				2366AB4121FF7F6A00868797 /* DirectionsViewController.swift */,
 				236EE37C22006E4B00813BB6 /* SplashViewController.swift */,
+				234792832201B45300BC4CA9 /* GooglePlacesTableViewCell.swift */,
 			);
 			path = screens;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				2328844121E6032100E5E7C1 /* Frameworks */,
 				2328844221E6032100E5E7C1 /* Resources */,
 				2975AB81BABBB4CD53ADDCF2 /* [CP] Embed Pods Frameworks */,
+				EB4772FB1790EE34A47D31F3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -514,6 +518,30 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		EB4772FB1790EE34A47D31F3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DogOutMap/Pods-DogOutMap-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DogOutMap/Pods-DogOutMap-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -527,6 +555,7 @@
 				2366AB4021FF579500868797 /* ReportsTableViewCell.swift in Sources */,
 				2373C76121E6994000C1F6DF /* TermsAndConditionsViewController.swift in Sources */,
 				2373C76721E74EC100C1F6DF /* HomeViewController.swift in Sources */,
+				234792842201B45300BC4CA9 /* GooglePlacesTableViewCell.swift in Sources */,
 				2373C76521E6DE9900C1F6DF /* VerifyCodeViewController.swift in Sources */,
 				23C8C24321FCC85700FECEC4 /* ReportLocationViewController.swift in Sources */,
 				2328844821E6032100E5E7C1 /* AppDelegate.swift in Sources */,

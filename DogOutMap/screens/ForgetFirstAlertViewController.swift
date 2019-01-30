@@ -33,6 +33,14 @@ class ForgetFirstAlertViewController: UIViewController {
         firstAlertUIView.isHidden = false
         secondAlertUIView.isHidden = true
 
+        ////  dismiss keyboard   ///////
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        tap.cancelsTouchesInView = false
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     @IBAction func sendEmailButtonAction(_ sender: Any) {

@@ -42,6 +42,15 @@ class SuggestNewLocationViewController: UIViewController, UITextViewDelegate {
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         
         self.mailTextField.text = Global.mail_address
+        
+        ////  dismiss keyboard   ///////
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        tap.cancelsTouchesInView = false
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     func textViewDidChange(_ textView: UITextView) {

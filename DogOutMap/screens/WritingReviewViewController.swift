@@ -76,7 +76,7 @@ class WritingReviewViewController: UIViewController, UITextViewDelegate {
         //  rating bar setting  ////
         ratingBar.color = UIColor.black
         ratingBar.isEnabled = true
-        ratingBar.isAbsValue = false
+        ratingBar.isAbsValue = true
         ratingBar.canAnimate = true
         ratingBar.maxValue = 5
         ratingBar.value = 0.0
@@ -86,9 +86,17 @@ class WritingReviewViewController: UIViewController, UITextViewDelegate {
         }
         
         /////   set user full name
-//        full_name = Global.user_fullname
-        full_name = "aaaaa"
+        full_name = Global.user_fullname
         self.usernameTextField.text = full_name
+        
+        ////  dismiss keyboard   ///////
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        tap.cancelsTouchesInView = false
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     @IBAction func cancelButtonAction(_ sender: Any) {

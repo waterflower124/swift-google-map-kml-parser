@@ -60,6 +60,15 @@ class ReportLocationViewController: UIViewController, UITextViewDelegate {
         ////  comment text view border setting  ////////
         self.commentTextView.layer.borderWidth = 1.0
         self.commentTextView.layer.borderColor = UIColor.lightGray.cgColor
+        
+        ////  dismiss keyboard   ///////
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        tap.cancelsTouchesInView = false
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     func textViewDidChange(_ textView: UITextView) {
